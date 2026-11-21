@@ -1,204 +1,194 @@
+
 <!DOCTYPE html>
-<html lang="tr" data-palette="zumrut">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bütçem'in amacı, özellikleri, ekibi ve geliştirme planı.">
-  <title>Hakkında | Bütçem</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <title>Hakkında | CebimdekiRota</title>
+  <link rel="icon" href="img/favicon.svg">
 
-  <!-- Bootstrap 5 ve Bootstrap Icons (CDN) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- Google Fonts: 3 palet icin gereken aileler. Palet secilince kullanilmayanlari silin -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Poppins:wght@600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site stilleri: once degiskenler, sonra ortak stiller -->
-  <link rel="stylesheet" href="css/variables.css">
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Kendi stillerimiz (Bootstrap'ten sonra gelmeli) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ===== Ust menu (tum sayfalarda ayni) ===== -->
-  <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg" aria-label="Ana menü">
+
+  <!-- ===== NAVBAR (tüm sayfalarda aynı) ===== -->
+  <header>
+    <nav class="menu-bar">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34">
-          <span>Bütçem</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenu"
-                aria-controls="anaMenu" aria-expanded="false" aria-label="Menüyü aç veya kapat">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="anaMenu">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-            <li class="nav-item"><a class="nav-link" href="islemler.html">İşlemler</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">Raporlar</a>
-              <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="kategoriler.html"><i class="bi bi-pie-chart"></i>Kategori Grafikleri</a></li>
-            <li><a class="dropdown-item" href="aylik-rapor.html"><i class="bi bi-calendar3"></i>Aylık Rapor</a></li>
-            <li><a class="dropdown-item" href="butce.html"><i class="bi bi-bullseye"></i>Bütçe Hedefleri</a></li>
-              </ul>
+        <a href="index.html" class="logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</a>
+
+        <div class="menu-alani">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+          <ul class="menu">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="islemler.html">İşlemler</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Raporlar</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="kategoriler.html">Kategori Grafikleri</a>
+                <a class="dropdown-item" href="aylik-rapor.html">Aylık Rapor</a>
+                <a class="dropdown-item" href="butce.html">Bütçe Hedefleri</a>
+              </div>
             </li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="hakkinda.html">Hakkında</a></li>
-            <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <a class="btn btn-brand" href="islemler.html#yeni-islem"><i class="bi bi-plus-lg"></i> İşlem Ekle</a>
-            </li>
+            <li><a href="hakkinda.html" class="aktif">Hakkında</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+            <li><a href="islemler.html#yeni-islem" class="menu-buton">+ İşlem Ekle</a></li>
           </ul>
         </div>
+
+        <div style="clear: both;"></div>
       </div>
     </nav>
   </header>
 
-  <!-- ===== Sayfa basligi ===== -->
-  <section class="page-header">
+  <!-- ===== SAYFA BAŞLIĞI ===== -->
+  <section class="sayfa-basligi">
     <div class="container">
-      <nav aria-label="Sayfa yolu">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Hakkında</li>
-        </ol>
-      </nav>
+      <p class="yol"><a href="index.html">Ana Sayfa</a> / Hakkında</p>
       <h1>Hakkında</h1>
-      <p>Bütçem neden var, ne yapıyor ve nasıl geliştiriliyor?</p>
+      <p>CebimdekiRota neden var, ne yapıyor ve nasıl geliştiriliyor?</p>
     </div>
   </section>
 
-  <main id="icerik">
+  <main class="bolum">
+    <div class="container">
 
-    <!-- ===== Amac ===== -->
-    <section class="section" aria-labelledby="amac-baslik">
-      <div class="container">
-        <div class="row align-items-center g-4 g-lg-5">
-          <div class="col-lg-6 order-lg-2">
-            <img class="img-fluid rounded-4" src="img/about.svg" width="560" height="400" loading="lazy"
-                 alt="Üst üste duran madeni paralar ve yükselen sütun grafik">
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <h2 class="section-title" id="amac-baslik">Amacımız</h2>
-            <p class="section-lead">Bütçem'in temel amacı, kullanıcıların günlük gelir ve gider akışlarını tek bir platformda kayıt altına almasını sağlamaktır.</p>
-            <p>Güncel bakiye durumunu anlık takip edebilmek ve elde edilen finansal verilerle bütçeyi daha verimli yönetebilmek hedeflenir. Şu anki sürüm yalnızca ön yüzdür. Kayıt ve hesaplama işlemleri için arka yüz sonraki aşamada eklenecektir.</p>
-            <h3 class="h5 mt-4">Neler yapılabiliyor?</h3>
-            <ul class="list-unstyled m-0">
-              <li class="mb-2"><i class="bi bi-check-circle-fill text-income"></i> Gelir ve gider kaydı ekleme</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill text-income"></i> Kategori bazlı halka ve çubuk grafikler</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill text-income"></i> Aylık rapor ve aylar arası karşılaştırma</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill text-income"></i> Kategori başına bütçe limiti</li>
-            </ul>
-          </div>
+      <!-- ===== AMACIMIZ ===== -->
+      <section class="row mb-4">
+        <div class="col-lg-6 mb-4">
+          <h2>Amacımız</h2>
+          <p class="lead soluk">CebimdekiRota'nın temel amacı, kullanıcıların günlük gelir ve gider akışlarını tek bir platformda kayıt altına almasını sağlamaktır.</p>
+          <p>Güncel bakiye durumunu anlık takip edebilmek ve elde edilen finansal verilerle bütçeyi daha verimli yönetebilmek hedeflenir. Proje, Web Programlama 1 dersi kapsamında yalnızca ön yüz (frontend) olarak hazırlanmıştır.</p>
+          <h3 class="mt-4">Neler yapılabiliyor?</h3>
+          <ul class="onay-listesi">
+            <li>✔ Gelir ve gider kaydı ekleme</li>
+            <li>✔ Kategori bazlı çubuk grafikler</li>
+            <li>✔ Aylık rapor ve aylar arası karşılaştırma</li>
+            <li>✔ Kategori başına bütçe limiti</li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== Gelistirme plani ===== -->
-    <section class="section pt-0" aria-labelledby="plan-baslik">
-      <div class="container">
-        <h2 class="section-title mb-4" id="plan-baslik">Geliştirme planı</h2>
-        <div class="row g-3">
-          <div class="col-md-4"><article class="card card-soft feature-card h-100"><div class="card-body">
-            <span class="stat-icon is-income"><i class="bi bi-1-circle"></i></span>
-            <h3>Ön yüz (şu an)</h3><p>HTML, CSS ve Bootstrap ile tüm sayfaların tasarımı ve duyarlı yerleşim.</p>
-          </div></article></div>
-          <div class="col-md-4"><article class="card card-soft feature-card h-100"><div class="card-body">
-            <span class="stat-icon"><i class="bi bi-2-circle"></i></span>
-            <h3>Arka yüz</h3><p>Kullanıcı girişi, işlemlerin veritabanına kaydı ve raporların hesaplanması.</p>
-          </div></article></div>
-          <div class="col-md-4"><article class="card card-soft feature-card h-100"><div class="card-body">
-            <span class="stat-icon is-accent"><i class="bi bi-3-circle"></i></span>
-            <h3>Geliştirmeler</h3><p>Hedef takibi, dışa aktarma ve bildirimler.</p>
-          </div></article></div>
+        <div class="col-lg-6 mb-4">
+          <img src="img/about.svg" class="img-fluid rounded" alt="Üst üste duran madeni paralar ve yükselen sütun grafik">
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===== Ekip ===== -->
-    <section class="section pt-0" aria-labelledby="ekip-baslik">
-      <div class="container">
-        <h2 class="section-title mb-4" id="ekip-baslik">Ekip</h2>
-        <!-- TODO: isimleri ve gorevleri grup uyeleri yazsin -->
-        <div class="row g-3">
-          <div class="col-6 col-md-4 col-lg"><article class="card card-soft card-hover team-card h-100 text-center"><div class="card-body">
-            <img src="img/avatar-1.svg" width="88" height="88" loading="lazy" alt="Ekip üyesi 1 için avatar">
-            <h3 class="h6 mb-1">Ad Soyad 1</h3>
-            <p class="small text-muted-2 mb-0">Görev / bölüm</p>
-          </div></article></div>
-          <div class="col-6 col-md-4 col-lg"><article class="card card-soft card-hover team-card h-100 text-center"><div class="card-body">
-            <img src="img/avatar-2.svg" width="88" height="88" loading="lazy" alt="Ekip üyesi 2 için avatar">
-            <h3 class="h6 mb-1">Ad Soyad 2</h3>
-            <p class="small text-muted-2 mb-0">Görev / bölüm</p>
-          </div></article></div>
-          <div class="col-6 col-md-4 col-lg"><article class="card card-soft card-hover team-card h-100 text-center"><div class="card-body">
-            <img src="img/avatar-3.svg" width="88" height="88" loading="lazy" alt="Ekip üyesi 3 için avatar">
-            <h3 class="h6 mb-1">Ad Soyad 3</h3>
-            <p class="small text-muted-2 mb-0">Görev / bölüm</p>
-          </div></article></div>
-          <div class="col-6 col-md-4 col-lg"><article class="card card-soft card-hover team-card h-100 text-center"><div class="card-body">
-            <img src="img/avatar-4.svg" width="88" height="88" loading="lazy" alt="Ekip üyesi 4 için avatar">
-            <h3 class="h6 mb-1">Ad Soyad 4</h3>
-            <p class="small text-muted-2 mb-0">Görev / bölüm</p>
-          </div></article></div>
-          <div class="col-6 col-md-4 col-lg"><article class="card card-soft card-hover team-card h-100 text-center"><div class="card-body">
-            <img src="img/avatar-5.svg" width="88" height="88" loading="lazy" alt="Ekip üyesi 5 için avatar">
-            <h3 class="h6 mb-1">Ad Soyad 5</h3>
-            <p class="small text-muted-2 mb-0">Görev / bölüm</p>
-          </div></article></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Teknolojiler ve SSS ===== -->
-    <section class="section pt-0" aria-labelledby="sss-baslik">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <h2 class="section-title" id="teknoloji-baslik">Kullanılan teknolojiler</h2>
-            <p class="d-flex flex-wrap gap-2 mt-3">
-              <span class="badge text-bg-dark">HTML5</span>
-              <span class="badge text-bg-primary">CSS3</span>
-              <span class="badge text-bg-secondary">Bootstrap 5</span>
-              <span class="badge text-bg-success">Bootstrap Icons</span>
-            </p>
+      <!-- ===== GELİŞTİRME PLANI ===== -->
+      <section class="mb-4">
+        <h2 class="mb-4">Geliştirme planı</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon ikon-gelir">1️⃣</div>
+              <h3>Tasarım (şu an)</h3>
+              <p class="soluk">HTML, CSS ve Bootstrap ile tüm sayfaların tasarımı ve duyarlı yerleşim.</p>
+            </article>
           </div>
-          <div class="col-lg-8">
-            <h2 class="section-title mb-3" id="sss-baslik">Sık sorulan sorular</h2>
-            <div class="accordion" id="sss">
-              <div class="accordion-item">
-                <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s1" aria-expanded="true" aria-controls="s1">Verilerim nerede saklanıyor?</button></h3>
-                <div id="s1" class="accordion-collapse collapse show" data-bs-parent="#sss"><div class="accordion-body">Şu anki sürümde veri saklanmıyor, sayfalarda örnek veriler görünüyor. Arka yüz eklendiğinde kayıtlar veritabanında tutulacak.</div></div>
-              </div>
-              <div class="accordion-item">
-                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2" aria-expanded="false" aria-controls="s2">Ücretli mi?</button></h3>
-                <div id="s2" class="accordion-collapse collapse" data-bs-parent="#sss"><div class="accordion-body">Bu proje bir ders ödevidir ve ticari bir ürün değildir.</div></div>
-              </div>
-              <div class="accordion-item">
-                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3" aria-expanded="false" aria-controls="s3">Telefonda kullanabilir miyim?</button></h3>
-                <div id="s3" class="accordion-collapse collapse" data-bs-parent="#sss"><div class="accordion-body">Evet. Tüm sayfalar masaüstü, tablet ve mobil ekranlara uyumlu olacak şekilde hazırlandı.</div></div>
-              </div>
-            </div>
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon">2️⃣</div>
+              <h3>Etkileşim</h3>
+              <p class="soluk">JavaScript ve jQuery ile form kontrolü, tema değişimi, filtreleme ve arama.</p>
+            </article>
+          </div>
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon ikon-vurgu">3️⃣</div>
+              <h3>Geliştirmeler</h3>
+              <p class="soluk">Hedef takibi, bildirimler ve yeni rapor türleri.</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- ===== EKİP ===== -->
+      <section class="mb-4">
+        <h2 class="mb-4">Ekip</h2>
+        <div class="row">
+        <div class="col-6 col-md-4 col-lg mb-4">
+          <article class="kutu ekip-karti">
+            <img src="img/avatar-1.svg" alt="Merve Bilgiç için avatar">
+            <h3>Merve Bilgiç</h3>
+            <p class="small soluk mb-0">1250505009</p>
+          </article>
+        </div>
+        <div class="col-6 col-md-4 col-lg mb-4">
+          <article class="kutu ekip-karti">
+            <img src="img/avatar-2.svg" alt="Samet Muhammed Ali Şafak için avatar">
+            <h3>Samet Muhammed Ali Şafak</h3>
+            <p class="small soluk mb-0">1250505013</p>
+          </article>
+        </div>
+        <div class="col-6 col-md-4 col-lg mb-4">
+          <article class="kutu ekip-karti">
+            <img src="img/avatar-3.svg" alt="Zekeriya Yusuf Cezlan için avatar">
+            <h3>Zekeriya Yusuf Cezlan</h3>
+            <p class="small soluk mb-0">1250505031</p>
+          </article>
+        </div>
+        <div class="col-6 col-md-4 col-lg mb-4">
+          <article class="kutu ekip-karti">
+            <img src="img/avatar-4.svg" alt="Nilsu Güven için avatar">
+            <h3>Nilsu Güven</h3>
+            <p class="small soluk mb-0">1250505069</p>
+          </article>
+        </div>
+        <div class="col-6 col-md-4 col-lg mb-4">
+          <article class="kutu ekip-karti">
+            <img src="img/avatar-5.svg" alt="Batuhan Uçak için avatar">
+            <h3>Batuhan Uçak</h3>
+            <p class="small soluk mb-0">5250505032</p>
+          </article>
+        </div>
+        </div>
+      </section>
+
+      <!-- ===== TEKNOLOJİLER ve SSS ===== -->
+      <section class="row">
+        <div class="col-lg-4 mb-4">
+          <h2>Kullanılan teknolojiler</h2>
+          <p class="teknolojiler mt-3">
+            <span class="badge bg-dark text-white">HTML5</span>
+            <span class="badge bg-primary text-white">CSS3</span>
+            <span class="badge bg-secondary text-white">Bootstrap 4</span>
+          </p>
+        </div>
+        <div class="col-lg-8">
+          <h2 class="mb-3">Sık sorulan sorular</h2>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#s1">Verilerim nerede saklanıyor? ▾</button>
+          <div id="s1" class="collapse">
+            <p class="acilir-icerik">Bu proje yalnızca ön yüzden oluşuyor, veri saklanmıyor. Sayfalarda örnek veriler görünüyor.</p>
+          </div>
+        </div>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#s2">Ücretli mi? ▾</button>
+          <div id="s2" class="collapse">
+            <p class="acilir-icerik">Bu proje bir ders ödevidir ve ticari bir ürün değildir.</p>
+          </div>
+        </div>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#s3">Telefonda kullanabilir miyim? ▾</button>
+          <div id="s3" class="collapse">
+            <p class="acilir-icerik">Evet. Tüm sayfalar masaüstü, tablet ve mobil ekranlara uyumlu olacak şekilde hazırlandı.</p>
+          </div>
+        </div>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- ===== Alt bilgi (tum sayfalarda ayni) ===== -->
-  <footer class="site-footer">
+  <!-- ===== FOOTER (tüm sayfalarda aynı) ===== -->
+  <footer class="site-footer text-center">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <a class="d-inline-flex align-items-center gap-2 mb-3 text-white fw-heading fs-4 fw-bold" href="index.html">
-            <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34" loading="lazy"> Bütçem
-          </a>
-          <p class="mb-0">Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <p class="footer-logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</p>
+          <p>Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-3 mb-4">
           <h2>Sayfalar</h2>
           <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
@@ -207,7 +197,7 @@
             <li><a href="iletisim.html">İletişim</a></li>
           </ul>
         </div>
-        <div class="col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-4">
           <h2>Raporlar</h2>
           <ul>
             <li><a href="kategoriler.html">Kategori Grafikleri</a></li>
@@ -216,14 +206,13 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>&copy; 2026 Bütçem. Web Programlama 1 dönem ödevi.</span>
-        <span>Kırklareli Üniversitesi, Yazılım Mühendisliği</span>
-      </div>
+      <p class="footer-alt">&copy; 2026 CebimdekiRota ·  Kırklareli Üniversitesi Yazılım Mühendisliği</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS: menü, dropdown, modal, sekme, akordeon ve carousel icin gerekli (kendi JavaScript kodumuz yok) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Açılır menü için gerekli JavaScript kütüphaneleri (sayfanın en sonunda) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

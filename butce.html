@@ -1,253 +1,218 @@
+
 <!DOCTYPE html>
-<html lang="tr" data-palette="zumrut">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kategori başına aylık harcama limiti belirle ve takip et.">
-  <title>Bütçe Hedefleri | Bütçem</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <title>Bütçe Hedefleri | CebimdekiRota</title>
+  <link rel="icon" href="img/favicon.svg">
 
-  <!-- Bootstrap 5 ve Bootstrap Icons (CDN) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- Google Fonts: 3 palet icin gereken aileler. Palet secilince kullanilmayanlari silin -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Poppins:wght@600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site stilleri: once degiskenler, sonra ortak stiller -->
-  <link rel="stylesheet" href="css/variables.css">
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Kendi stillerimiz (Bootstrap'ten sonra gelmeli) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ===== Ust menu (tum sayfalarda ayni) ===== -->
-  <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg" aria-label="Ana menü">
+
+  <!-- ===== NAVBAR (tüm sayfalarda aynı) ===== -->
+  <header>
+    <nav class="menu-bar">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34">
-          <span>Bütçem</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenu"
-                aria-controls="anaMenu" aria-expanded="false" aria-label="Menüyü aç veya kapat">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="anaMenu">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-            <li class="nav-item"><a class="nav-link" href="islemler.html">İşlemler</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">Raporlar</a>
-              <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="kategoriler.html"><i class="bi bi-pie-chart"></i>Kategori Grafikleri</a></li>
-            <li><a class="dropdown-item" href="aylik-rapor.html"><i class="bi bi-calendar3"></i>Aylık Rapor</a></li>
-            <li><a class="dropdown-item active" href="butce.html"><i class="bi bi-bullseye"></i>Bütçe Hedefleri</a></li>
-              </ul>
+        <a href="index.html" class="logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</a>
+
+        <div class="menu-alani">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+          <ul class="menu">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="islemler.html">İşlemler</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle aktif" data-toggle="dropdown">Raporlar</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="kategoriler.html">Kategori Grafikleri</a>
+                <a class="dropdown-item" href="aylik-rapor.html">Aylık Rapor</a>
+                <a class="dropdown-item" href="butce.html">Bütçe Hedefleri</a>
+              </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
-            <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <a class="btn btn-brand" href="islemler.html#yeni-islem"><i class="bi bi-plus-lg"></i> İşlem Ekle</a>
-            </li>
+            <li><a href="hakkinda.html">Hakkında</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+            <li><a href="islemler.html#yeni-islem" class="menu-buton">+ İşlem Ekle</a></li>
           </ul>
         </div>
+
+        <div style="clear: both;"></div>
       </div>
     </nav>
   </header>
 
-  <!-- ===== Sayfa basligi ===== -->
-  <section class="page-header">
+  <!-- ===== SAYFA BAŞLIĞI ===== -->
+  <section class="sayfa-basligi">
     <div class="container">
-      <nav aria-label="Sayfa yolu">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Bütçe Hedefleri</li>
-        </ol>
-      </nav>
+      <p class="yol"><a href="index.html">Ana Sayfa</a> / Bütçe Hedefleri</p>
       <h1>Bütçe Hedefleri</h1>
       <p>Kategori başına aylık limit belirle ve harcamanı bu limite göre takip et.</p>
     </div>
   </section>
 
-  <main id="icerik" class="section">
+  <main class="bolum">
     <div class="container">
 
-      <div class="alert alert-warning d-flex align-items-start gap-2" role="alert">
-        <i class="bi bi-exclamation-triangle-fill mt-1"></i>
-        <div><strong>Eğlence</strong> kategorisinde bu ayki limitini aştın (1.800 ₺ / 1.500 ₺). <strong>Market</strong> ve <strong>Fatura</strong> limitin %90'ına ulaştı.</div>
+      <!-- Uyarı (Bootstrap Alert) -->
+      <div class="alert alert-warning">
+        ⚠️ <strong>Eğlence</strong> kategorisinde bu ayki limitini aştın (1.800 ₺ / 1.500 ₺). <strong>Market</strong> ve <strong>Fatura</strong> limitin %90'ına ulaştı.
       </div>
 
-      <!-- ===== Genel durum ===== -->
-      <section class="card card-soft mb-4" aria-labelledby="genel-baslik"><div class="card-body p-4">
-        <div class="row align-items-center g-3">
+      <!-- ===== GENEL DURUM ===== -->
+      <section class="kutu mb-4">
+        <div class="row">
           <div class="col-md-8">
-            <h2 class="h5" id="genel-baslik">Toplam bütçe, Kasım 2026</h2>
-            <p class="stat-value mb-2">23.100 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 25.000 ₺</small></p>
-            <div class="meter is-warn" style="--value:92.4" role="img" aria-label="Toplam bütçenin yüzde 92,4'ü kullanıldı"><span></span></div>
-            <p class="stat-note mt-2 mb-0">%92,4 kullanıldı, kalan 1.900 ₺</p>
+            <h2 class="kutu-baslik">Toplam bütçe, Kasım 2026</h2>
+            <p class="ozet-deger">23.100 ₺ <span class="ay text-muted">/ 25.000 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-warning" style="width:92.4%;"></div></div>
+            <p class="ozet-not mt-2">%92,4 kullanıldı, kalan 1.900 ₺</p>
           </div>
-          <div class="col-md-4 text-md-end">
-            <button type="button" class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#limitModal"><i class="bi bi-sliders"></i> Limit belirle</button>
+          <div class="col-md-4 mt-3">
+            <button type="button" class="btn buton-ana" data-toggle="collapse" data-target="#limit-formu">🎚️ Limit belirle</button>
           </div>
         </div>
-      </div></section>
 
-      <!-- ===== Kategori limitleri ===== -->
-      <h2 class="h4 mb-3">Kategori limitleri</h2>
-      <div class="row g-3">
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="kira"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-kira"><i class="bi bi-house-door"></i> Kira / Konut</span><span class="badge-delta is-warn">Limit doldu</span>
+        <!-- Butona tıklayınca açılan limit formu (Bootstrap Collapse) -->
+        <div id="limit-formu" class="collapse">
+          <form action="#" method="post" class="limit-formu mt-4">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="limit-kategori" class="form-etiket">Kategori</label>
+                <select class="form-control" id="limit-kategori" name="kategori" required>
+                  <option value="">Kategori seç</option>
+                  <option value="kira">Kira / Konut</option>
+                  <option value="market">Market</option>
+                  <option value="ulasim">Ulaşım</option>
+                  <option value="fatura">Fatura</option>
+                  <option value="eglence">Eğlence</option>
+                  <option value="saglik">Sağlık</option>
+                  <option value="diger">Diğer</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="limit-tutar" class="form-etiket">Aylık limit (₺)</label>
+                <input type="number" class="form-control" id="limit-tutar" name="limit" min="1" required>
+              </div>
             </div>
-            <p class="stat-value mb-1">9.000 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 9.000 ₺</small></p>
-            <div class="meter is-warn my-2" style="--value:100" role="img" aria-label="Kira / Konut bütçesinin yüzde 100'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%100 kullanıldı</p>
-          </div></article>
+            <div class="form-group">
+              <label for="limit-esik" class="form-etiket">Uyarı eşiği (limitin %50 ile %100'ü arası)</label>
+              <input type="range" class="d-block w-100" id="limit-esik" name="uyari_esigi" min="50" max="100" value="90">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="limit-eposta" name="eposta_bildirim" value="1">
+              <label class="form-check-label" for="limit-eposta">Limite yaklaşınca e-posta ile haber ver</label>
+            </div>
+            <input type="submit" value="Kaydet" class="btn buton-ana mr-2">
+            <input type="reset" value="Temizle" class="btn buton-cerceve">
+          </form>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="market"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-market"><i class="bi bi-basket"></i> Market</span><span class="badge-delta is-warn">Yaklaşıyor</span>
-            </div>
-            <p class="stat-value mb-1">5.400 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 6.000 ₺</small></p>
-            <div class="meter is-warn my-2" style="--value:90" role="img" aria-label="Market bütçesinin yüzde 90'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%90 kullanıldı</p>
-          </div></article>
+      </section>
+
+      <!-- ===== KATEGORİ LİMİTLERİ ===== -->
+      <h2 class="mb-3">Kategori limitleri</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-warning text-dark durum">Limit doldu</span>
+            <span class="kategori kat-kira">🏠 Kira / Konut</span>
+            <p class="ozet-deger mt-3">9.000 ₺ <span class="ay text-muted">/ 9.000 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-warning" style="width:100%;"></div></div>
+            <p class="ozet-not mt-2">%100 kullanıldı</p>
+          </article>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="ulasim"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-ulasim"><i class="bi bi-bus-front"></i> Ulaşım</span><span class="badge-delta is-good">Rahat</span>
-            </div>
-            <p class="stat-value mb-1">2.100 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 2.500 ₺</small></p>
-            <div class="meter is-ok my-2" style="--value:84" role="img" aria-label="Ulaşım bütçesinin yüzde 84'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%84 kullanıldı</p>
-          </div></article>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-warning text-dark durum">Yaklaşıyor</span>
+            <span class="kategori kat-market">🛒 Market</span>
+            <p class="ozet-deger mt-3">5.400 ₺ <span class="ay text-muted">/ 6.000 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-warning" style="width:90%;"></div></div>
+            <p class="ozet-not mt-2">%90 kullanıldı</p>
+          </article>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="fatura"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-fatura"><i class="bi bi-lightning-charge"></i> Fatura</span><span class="badge-delta is-warn">Yaklaşıyor</span>
-            </div>
-            <p class="stat-value mb-1">2.700 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 3.000 ₺</small></p>
-            <div class="meter is-warn my-2" style="--value:90" role="img" aria-label="Fatura bütçesinin yüzde 90'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%90 kullanıldı</p>
-          </div></article>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-success text-white durum">Rahat</span>
+            <span class="kategori kat-ulasim">🚌 Ulaşım</span>
+            <p class="ozet-deger mt-3">2.100 ₺ <span class="ay text-muted">/ 2.500 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-success" style="width:84%;"></div></div>
+            <p class="ozet-not mt-2">%84 kullanıldı</p>
+          </article>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="eglence"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-eglence"><i class="bi bi-controller"></i> Eğlence</span><span class="badge-delta is-bad">Aşıldı</span>
-            </div>
-            <p class="stat-value mb-1">1.800 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 1.500 ₺</small></p>
-            <div class="meter is-over my-2" style="--value:120" role="img" aria-label="Eğlence bütçesinin yüzde 120'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%120 kullanıldı</p>
-          </div></article>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-warning text-dark durum">Yaklaşıyor</span>
+            <span class="kategori kat-fatura">⚡ Fatura</span>
+            <p class="ozet-deger mt-3">2.700 ₺ <span class="ay text-muted">/ 3.000 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-warning" style="width:90%;"></div></div>
+            <p class="ozet-not mt-2">%90 kullanıldı</p>
+          </article>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="saglik"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-saglik"><i class="bi bi-heart-pulse"></i> Sağlık</span><span class="badge-delta is-good">Rahat</span>
-            </div>
-            <p class="stat-value mb-1">900 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 1.500 ₺</small></p>
-            <div class="meter is-ok my-2" style="--value:60" role="img" aria-label="Sağlık bütçesinin yüzde 60'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%60 kullanıldı</p>
-          </div></article>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-danger text-white durum">Aşıldı</span>
+            <span class="kategori kat-eglence">🎮 Eğlence</span>
+            <p class="ozet-deger mt-3">1.800 ₺ <span class="ay text-muted">/ 1.500 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-danger" style="width:100%;"></div></div>
+            <p class="ozet-not mt-2">%120 kullanıldı</p>
+          </article>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <article class="card card-soft card-hover h-100" data-category="diger"><div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <span class="badge-cat cat-diger"><i class="bi bi-three-dots"></i> Diğer</span><span class="badge-delta is-good">Rahat</span>
-            </div>
-            <p class="stat-value mb-1">1.200 ₺ <small class="fs-6 text-muted-2 fw-medium">/ 1.500 ₺</small></p>
-            <div class="meter is-ok my-2" style="--value:80" role="img" aria-label="Diğer bütçesinin yüzde 80'i kullanıldı"><span></span></div>
-            <p class="stat-note mb-0">%80 kullanıldı</p>
-          </div></article>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-success text-white durum">Rahat</span>
+            <span class="kategori kat-saglik">💊 Sağlık</span>
+            <p class="ozet-deger mt-3">900 ₺ <span class="ay text-muted">/ 1.500 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-success" style="width:60%;"></div></div>
+            <p class="ozet-not mt-2">%60 kullanıldı</p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <article class="kutu">
+            <span class="badge bg-success text-white durum">Rahat</span>
+            <span class="kategori kat-diger">• Diğer</span>
+            <p class="ozet-deger mt-3">1.200 ₺ <span class="ay text-muted">/ 1.500 ₺</span></p>
+            <div class="progress"><div class="progress-bar bg-success" style="width:80%;"></div></div>
+            <p class="ozet-not mt-2">%80 kullanıldı</p>
+          </article>
         </div>
       </div>
 
-      <!-- ===== Ipuclari (Accordion) ===== -->
-      <section class="mt-5" aria-labelledby="ipucu-baslik">
-        <h2 class="h4 mb-3" id="ipucu-baslik">Bütçe belirleme ipuçları</h2>
-        <div class="accordion" id="ipuclari">
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#i1" aria-expanded="true" aria-controls="i1">Limiti nasıl seçmeliyim?</button></h3>
-            <div id="i1" class="accordion-collapse collapse show" data-bs-parent="#ipuclari"><div class="accordion-body">Son üç ayın ortalamasına bakıp biraz altında bir limit koymak iyi bir başlangıçtır. Aylık rapor sayfasındaki karşılaştırma tablosu bu ortalamayı görmene yardım eder.</div></div>
+      <!-- ===== İPUÇLARI (Bootstrap Collapse) ===== -->
+      <section class="mt-2">
+        <h2 class="mb-3">Bütçe belirleme ipuçları</h2>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#i1">Limiti nasıl seçmeliyim? ▾</button>
+          <div id="i1" class="collapse">
+            <p class="acilir-icerik">Son üç ayın ortalamasına bakıp biraz altında bir limit koymak iyi bir başlangıçtır. <a href="aylik-rapor.html">Aylık rapor</a> sayfasındaki karşılaştırma tablosu bu ortalamayı görmene yardım eder.</p>
           </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i2" aria-expanded="false" aria-controls="i2">Sabit giderleri nasıl yönetirim?</button></h3>
-            <div id="i2" class="accordion-collapse collapse" data-bs-parent="#ipuclari"><div class="accordion-body">Kira ve fatura gibi her ay tekrarlanan ödemeleri işlem eklerken "Her ay tekrarlansın" seçeneğiyle işaretle. Limitlerini de bu tutarlara göre belirle.</div></div>
+        </div>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#i2">Sabit giderleri nasıl yönetirim? ▾</button>
+          <div id="i2" class="collapse">
+            <p class="acilir-icerik">Kira ve fatura gibi her ay tekrarlanan ödemeleri işlem eklerken "Her ay tekrarlansın" seçeneğiyle işaretle. Limitlerini de bu tutarlara göre belirle.</p>
           </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#i3" aria-expanded="false" aria-controls="i3">Limiti aşarsam ne olur?</button></h3>
-            <div id="i3" class="accordion-collapse collapse" data-bs-parent="#ipuclari"><div class="accordion-body">Çubuk kırmızıya döner ve bu sayfanın üstünde uyarı görürsün. Harcamanı engellemez, sadece fark etmeni sağlar.</div></div>
+        </div>
+        <div class="acilir">
+          <button type="button" class="btn acilir-baslik" data-toggle="collapse" data-target="#i3">Limiti aşarsam ne olur? ▾</button>
+          <div id="i3" class="collapse">
+            <p class="acilir-icerik">Çubuk kırmızıya döner ve bu sayfanın üstünde uyarı görürsün. Harcamanı engellemez, sadece fark etmeni sağlar.</p>
           </div>
         </div>
       </section>
     </div>
   </main>
 
-  <!-- ===== Limit belirleme (Bootstrap Modal) =====
-       BACKEND NOTU: form PUT /api/butce-limitleri ile baglanacak. -->
-  <div class="modal fade" id="limitModal" tabindex="-1" aria-labelledby="limitBaslik" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form class="modal-content" action="#" method="post">
-        <div class="modal-header">
-          <h2 class="modal-title h5" id="limitBaslik">Aylık limit belirle</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="limit-kategori" class="form-label">Kategori</label>
-            <select class="form-select" id="limit-kategori" name="kategori_id" required>
-              <option value="" selected disabled>Kategori seç</option>
-              <option value="kira">Kira / Konut</option>
-              <option value="market">Market</option>
-              <option value="ulasim">Ulaşım</option>
-              <option value="fatura">Fatura</option>
-              <option value="eglence">Eğlence</option>
-              <option value="saglik">Sağlık</option>
-              <option value="diger">Diğer</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="limit-tutar" class="form-label">Aylık limit</label>
-            <div class="input-group">
-              <input type="number" class="form-control" id="limit-tutar" name="limit" min="1" step="1" required>
-              <span class="input-group-text">₺</span>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="limit-esik" class="form-label">Uyarı eşiği: limitin %90'ına gelince</label>
-            <input type="range" class="form-range" id="limit-esik" name="uyari_esigi" min="50" max="100" step="5" value="90">
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="limit-eposta" name="eposta_bildirim" value="1">
-            <label class="form-check-label" for="limit-eposta">Limite yaklaşınca e-posta ile haber ver</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Vazgeç</button>
-          <button type="submit" class="btn btn-brand">Kaydet</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ===== Alt bilgi (tum sayfalarda ayni) ===== -->
-  <footer class="site-footer">
+  <!-- ===== FOOTER (tüm sayfalarda aynı) ===== -->
+  <footer class="site-footer text-center">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <a class="d-inline-flex align-items-center gap-2 mb-3 text-white fw-heading fs-4 fw-bold" href="index.html">
-            <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34" loading="lazy"> Bütçem
-          </a>
-          <p class="mb-0">Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <p class="footer-logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</p>
+          <p>Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-3 mb-4">
           <h2>Sayfalar</h2>
           <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
@@ -256,7 +221,7 @@
             <li><a href="iletisim.html">İletişim</a></li>
           </ul>
         </div>
-        <div class="col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-4">
           <h2>Raporlar</h2>
           <ul>
             <li><a href="kategoriler.html">Kategori Grafikleri</a></li>
@@ -265,14 +230,13 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>&copy; 2026 Bütçem. Web Programlama 1 dönem ödevi.</span>
-        <span>Kırklareli Üniversitesi, Yazılım Mühendisliği</span>
-      </div>
+      <p class="footer-alt">&copy; 2026 CebimdekiRota ·  Kırklareli Üniversitesi Yazılım Mühendisliği</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS: menü, dropdown, modal, sekme, akordeon ve carousel icin gerekli (kendi JavaScript kodumuz yok) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Açılır menü için gerekli JavaScript kütüphaneleri (sayfanın en sonunda) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

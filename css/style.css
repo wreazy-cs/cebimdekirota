@@ -1,473 +1,594 @@
+
 /* =========================================================
-   style.css  |  Butcem, ortak stiller (tum sayfalar)
-   Not: Projede kendi JavaScript kodu yok. Grafikler, hover ve renkler saf CSS.
-   Icindekiler:
+   style.css  |  CebimdekiRota - tüm sayfaların ortak stilleri
+
+   Renk paleti (Zümrüt):
+     #0f766e  ana renk (butonlar, linkler, vurgular)
+     #115e59  koyu ton (hover)
+     #e6f4f1  açık ton (zeminler)
+     #f59e0b  vurgu rengi (rozetler, ikon detayları)
+     #f4f7f6  sayfa arka planı
+     #0f172a  yazı rengi       #64748b  soluk yazı
+     #e2e8f0  kenarlık rengi
+     #15803d  gelir (yeşil)    #b91c1c  gider (kırmızı)
+
+   İçindekiler:
      1. Temel ayarlar
-     2. Navbar ve footer
-     3. Butonlar
-     4. Sayfa basliklari ve hero
-     5. Kartlar ve ozet kutulari
-     6. Tablo ve rozetler
-     7. Grafikler (saf CSS)
-     8. Form
-     9. Bootstrap bilesen ayarlari
-    10. Yardimci siniflar ve responsive
+     2. Navbar
+     3. Footer
+     4. Ortak parçalar (bölümler, kutular, butonlar, ikonlar)
+     5. Ana sayfa
+     5b. İç sayfalar (sayfa başlığı, form, tablo, sayfa numaraları)
+     5c. Rapor sayfaları (dönem seçimi, aylık grafik, açılır bölümler, limit kutuları)
+     5d. Hakkında ve İletişim
+     6. Mobil ve tablet (992px'ten dar ekranlar)
+     7. Telefon (576px'ten dar ekranlar)
    ========================================================= */
 
+
 /* ---------- 1. Temel ayarlar ---------- */
-:root {
-  --bs-body-font-family: var(--font-body);
-  --bs-body-bg: var(--bg);
-  --bs-body-color: var(--text);
-  --bs-link-color: var(--brand);
-  --bs-link-hover-color: var(--brand-dark);
-  --bs-border-color: var(--border);
-}
-
 body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f7f6;
+  color: #0f172a;
 }
 
-h1, h2, h3, h4, h5, h6,
-.navbar-brand {
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
+h1, h2, h3 {
+  font-weight: bold;
 }
 
-h1 { font-weight: 800; }
-h2, h3 { font-weight: 700; }
 
-a { text-underline-offset: 3px; }
-
-:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--brand) 45%, white);
-  outline-offset: 2px;
+/* ---------- 2. Navbar ---------- */
+.menu-bar {
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.section { padding: 3.5rem 0; }
-.section-title { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: 0.4rem; }
-.section-lead { color: var(--muted); max-width: 60ch; }
-
-/* ---------- 2. Navbar ve footer ---------- */
-.site-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  z-index: 1030;
+/* Logo: solda */
+.logo {
+  float: left;
+  padding: 12px 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #0f172a;
+}
+.logo:link, .logo:visited {
+  color: #0f172a;
+  text-decoration: none;
+}
+.logo:hover {
+  color: #0f766e;
+  text-decoration: none;
+}
+.logo img {
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
 }
 
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 800;
-  font-size: 1.35rem;
-  color: var(--text);
+/* Menü: sağda */
+.menu-alani {
+  float: right;
+  position: relative;          /* mobilde açılan menü buna göre konumlanır */
 }
-.navbar-brand:hover { color: var(--brand); }
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu li {
+  float: left;                 /* linkler yan yana */
+}
+.menu a {
+  display: block;
+  margin: 10px 2px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: #0f172a;
+}
+.menu a:link, .menu a:visited {
+  color: #0f172a;
+  text-decoration: none;
+}
+.menu a:hover {
+  background-color: #e6f4f1;
+  color: #115e59;
+  text-decoration: none;
+}
 
-.navbar .nav-link {
-  font-weight: 500;
-  color: var(--text);
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  transition: background-color 0.2s, color 0.2s;
+/* Bulunduğumuz sayfanın linki */
+.menu a.aktif {
+  background-color: #e6f4f1;
+  color: #0f766e;
+  font-weight: bold;
 }
-.navbar .nav-link:hover,
-.navbar .nav-link:focus { background: var(--brand-soft); color: var(--brand-dark); }
-.navbar .nav-link.active { background: var(--brand-soft); color: var(--brand); font-weight: 700; }
 
-.dropdown-menu {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  padding: 0.5rem;
+/* Açılır menünün (dropdown) içindeki linkler */
+.menu .dropdown-menu a {
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 0;
 }
-.dropdown-item {
-  border-radius: 8px;
-  padding: 0.55rem 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.dropdown-item:hover,
-.dropdown-item:focus { background: var(--brand-soft); color: var(--brand-dark); }
-.dropdown-item.active { background: var(--brand); color: #fff; }
 
+/* "İşlem Ekle" butonu */
+.menu .menu-buton {
+  margin-left: 10px;
+  background-color: #0f766e;
+  color: white;
+  font-weight: bold;
+}
+.menu .menu-buton:hover {
+  background-color: #115e59;
+  color: white;
+}
+
+/* Hamburger simgesi: geniş ekranda gizli */
+.hamburger {
+  display: none;
+  padding: 16px 0;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #0f172a;
+}
+
+
+/* ---------- 3. Footer ---------- */
 .site-footer {
-  background: #0f172a;
+  margin-top: 48px;
+  padding-top: 48px;
+  padding-bottom: 24px;
+  background-color: #0f172a;
   color: #cbd5e1;
-  padding: 3rem 0 1.5rem;
-  margin-top: 3rem;
 }
-.site-footer h2 { color: #fff; font-size: 1rem; margin-bottom: 1rem; }
-.site-footer a { color: #cbd5e1; text-decoration: none; }
-.site-footer a:hover { color: #fff; text-decoration: underline; }
-.site-footer ul { list-style: none; padding: 0; margin: 0; }
-.site-footer li { margin-bottom: 0.5rem; }
-.footer-bottom {
+.site-footer h2 {
+  color: white;
+  font-size: 18px;
+}
+.site-footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+.site-footer li {
+  margin-bottom: 8px;
+}
+.site-footer a:link, .site-footer a:visited {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+.footer-logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+.footer-logo img {
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
+}
+.footer-alt {
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px solid #1e293b;
-  margin-top: 2rem;
-  padding-top: 1.25rem;
-  font-size: 0.875rem;
+  font-size: 14px;
   color: #94a3b8;
 }
 
-/* ---------- 3. Butonlar ---------- */
-.btn { border-radius: 999px; font-weight: 600; padding: 0.55rem 1.25rem; }
 
-.btn-brand {
-  background: var(--brand);
-  border: 2px solid var(--brand);
-  color: #fff;
-  transition: transform 0.15s, background-color 0.2s, box-shadow 0.2s;
-}
-.btn-brand:hover,
-.btn-brand:focus {
-  background: var(--brand-dark);
-  border-color: var(--brand-dark);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--brand) 35%, transparent);
+/* ---------- 4. Ortak parçalar ---------- */
+
+/* Her bölümün üst ve alt boşluğu */
+.bolum {
+  padding-top: 48px;
+  padding-bottom: 24px;
 }
 
-.btn-outline-brand {
-  background: transparent;
-  border: 2px solid var(--brand);
-  color: var(--brand);
-  transition: transform 0.15s, background-color 0.2s, color 0.2s;
-}
-.btn-outline-brand:hover,
-.btn-outline-brand:focus {
-  background: var(--brand);
-  color: #fff;
-  transform: translateY(-2px);
+/* Soluk (gri) yazı */
+.soluk {
+  color: #64748b;
 }
 
-.btn-light-glass {
-  background: rgba(255, 255, 255, 0.16);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: #fff;
+/* Beyaz, kenarlıklı, oval köşeli kutu (kart görünümü) */
+.kutu {
+  height: 100%;
+  padding: 24px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
 }
-.btn-light-glass:hover { background: #fff; color: var(--brand-dark); }
+.kutu:hover {
+  border-color: #0f766e;           /* üzerine gelince kenar yeşil olur */
+}
+.kutu h3 {
+  font-size: 18px;
+}
 
-/* ---------- 4. Sayfa basliklari ve hero ---------- */
-.hero {
-  background:
-    radial-gradient(900px 400px at 85% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
-    linear-gradient(135deg, var(--brand-soft), #ffffff 70%);
-  padding: 4rem 0 3.5rem;
+/* Kutunun başlığı ve sağındaki link */
+.kutu-baslik {
+  font-size: 18px;
+  margin-bottom: 16px;
 }
-.hero h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); line-height: 1.12; }
-.hero h1 span { color: var(--brand); }
-.hero-points { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; }
-.hero-points li { display: flex; align-items: center; gap: 0.4rem; color: var(--muted); font-weight: 500; }
-.hero-points i { color: var(--brand); }
+.kutu-baslik a {
+  float: right;
+}
+.kutu-baslik a.small:link, .kutu-baslik a.small:visited {
+  color: #0f766e;
+}
 
-.page-header {
-  background: linear-gradient(120deg, var(--brand-dark), var(--brand));
-  color: #fff;
-  padding: 2.6rem 0 2.4rem;
+/* Yeşil dolu buton */
+.buton-ana {
+  background-color: #0f766e;
+  border: 2px solid #0f766e;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
 }
-.page-header h1 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); margin-bottom: 0.3rem; }
-.page-header p { color: rgba(255, 255, 255, 0.85); margin: 0; max-width: 62ch; }
-.page-header .breadcrumb { margin-bottom: 0.8rem; --bs-breadcrumb-divider-color: rgba(255, 255, 255, 0.6); }
-.page-header .breadcrumb a { color: #fff; }
-.page-header .breadcrumb-item.active { color: rgba(255, 255, 255, 0.75); }
+.buton-ana:hover {
+  background-color: #115e59;
+  border-color: #115e59;
+  color: white;
+}
 
-/* ---------- 5. Kartlar ve ozet kutulari ---------- */
-.card-soft {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+/* Yeşil çerçeveli buton: üzerine gelince dolar */
+.buton-cerceve {
+  background-color: transparent;
+  border: 2px solid #0f766e;
+  border-radius: 20px;
+  color: #0f766e;
+  font-weight: bold;
 }
-.card-hover { transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: color-mix(in srgb, var(--brand) 35%, var(--border));
+.buton-cerceve:hover {
+  background-color: #0f766e;
+  color: white;
 }
-.card-title-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-.card-title-row h2, .card-title-row h3 { font-size: 1.1rem; margin: 0; }
 
-.stat-card { display: flex; gap: 1rem; align-items: flex-start; }
-.stat-icon {
-  flex: none;
+/* Yuvarlak köşeli kare ikon kutusu */
+.ikon {
   width: 48px;
   height: 48px;
-  display: grid;
-  place-items: center;
+  line-height: 48px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 22px;
   border-radius: 14px;
-  background: var(--brand-soft);
-  color: var(--brand);
-  font-size: 1.4rem;
+  background-color: #e6f4f1;
 }
-.stat-icon.is-income { background: var(--income-soft); color: var(--income); }
-.stat-icon.is-expense { background: var(--expense-soft); color: var(--expense); }
-.stat-icon.is-accent { background: var(--warning-soft); color: var(--warning-text); }
-.stat-label { color: var(--muted); font-size: 0.875rem; font-weight: 500; margin: 0; }
-.stat-value { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; margin: 0.1rem 0 0.2rem; line-height: 1.2; }
-.stat-note { font-size: 0.8rem; color: var(--muted); margin: 0; }
+.ikon-gelir { background-color: #dcfce7; }
+.ikon-gider { background-color: #fee2e2; }
+.ikon-vurgu { background-color: #fef3c7; }
 
-.feature-card .stat-icon { margin-bottom: 1rem; }
-.feature-card h3 { font-size: 1.1rem; }
-.feature-card p { color: var(--muted); margin: 0; }
+/* Gelir yeşil, gider kırmızı */
+.gelir { color: #15803d; }
+.gider { color: #b91c1c; }
 
-.team-card img { width: 88px; height: 88px; border-radius: 50%; margin-bottom: 0.8rem; }
 
-.cta-band {
-  background: linear-gradient(120deg, var(--brand-dark), var(--brand));
-  color: #fff;
-  border-radius: calc(var(--radius) + 6px);
-  padding: 2.5rem;
+/* ---------- 5. Ana sayfa ---------- */
+
+/* Giriş bölümü */
+.hero {
+  padding-top: 64px;
+  padding-bottom: 48px;
+  background: linear-gradient(to right, #e6f4f1, white);   /* CSS3 gradyan */
 }
-.cta-band p { color: rgba(255, 255, 255, 0.85); }
+.hero h1 {
+  font-size: 44px;
+}
+.hero h1 span {
+  color: #0f766e;
+}
+.etiket {
+  padding: 8px 14px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+.hero-maddeler {
+  list-style-type: none;
+  margin-top: 16px;
+  padding: 0;
+}
+.hero-maddeler li {
+  float: left;
+  margin-right: 20px;
+  color: #64748b;
+  font-weight: bold;
+}
 
-/* ---------- 6. Tablo ve rozetler ---------- */
-/* Gizli (visually-hidden) basliklar tabloyu tasirmasin diye kaydirma alani konumlu olmali */
-.table-responsive { position: relative; }
+/* Özet kutuları */
+.ozet-baslik {
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 14px;
+}
+.ozet-deger {
+  margin-bottom: 4px;
+  font-size: 26px;
+  font-weight: bold;
+}
+.ozet-not {
+  margin-bottom: 0;
+  color: #64748b;
+  font-size: 13px;
+}
 
-.table-modern { --bs-table-bg: transparent; margin: 0; }
-.table-modern thead th {
-  font-size: 0.78rem;
+/* Tablo */
+.table th {
+  color: #64748b;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  font-weight: 600;
-  white-space: nowrap;
 }
-.table-modern td { vertical-align: middle; border-color: var(--border); }
-.table-modern tbody tr { transition: background-color 0.15s; }
-.table-modern tbody tr:hover { background: var(--brand-soft); }
-.table-modern tfoot td { font-weight: 700; border-top: 2px solid var(--border); }
-
-.amount { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; text-align: right; }
-.amount-gelir { color: var(--income); }
-.amount-gider { color: var(--expense); }
-
-.badge-cat {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.28rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background: color-mix(in srgb, var(--c) 13%, white);
-  color: var(--text);
-  white-space: nowrap;
+.tutar {
+  font-weight: bold;
 }
-.badge-cat::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
 
-.cat-kira { --c: var(--cat-kira); }
-.cat-market { --c: var(--cat-market); }
-.cat-ulasim { --c: var(--cat-ulasim); }
-.cat-fatura { --c: var(--cat-fatura); }
-.cat-eglence { --c: var(--cat-eglence); }
-.cat-saglik { --c: var(--cat-saglik); }
-.cat-diger { --c: var(--cat-diger); }
-.cat-maas { --c: var(--cat-maas); }
-.cat-freelans { --c: var(--cat-freelans); }
-.cat-gelirdiger { --c: var(--cat-gelirdiger); }
-
-.badge-tur { font-weight: 600; border-radius: 999px; padding: 0.3rem 0.7rem; font-size: 0.78rem; }
-.badge-tur.is-gelir { background: var(--income-soft); color: var(--income); }
-.badge-tur.is-gider { background: var(--expense-soft); color: var(--expense); }
-.badge-delta { border-radius: 999px; font-weight: 600; font-size: 0.78rem; padding: 0.25rem 0.6rem; }
-.badge-delta.is-good { background: var(--income-soft); color: var(--income); }
-.badge-delta.is-bad { background: var(--expense-soft); color: var(--expense); }
-.badge-delta.is-warn { background: var(--warning-soft); color: var(--warning-text); }
-.badge-delta.is-neutral { background: #e2e8f0; color: #334155; }
-
-/* ---------- 7. Grafikler (saf CSS, JavaScript gerekmez) ---------- */
-/* Halka grafik: --donut degiskenine conic-gradient yazilir */
-.donut {
-  position: relative;
-  width: 220px;
-  max-width: 100%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--donut);
-  margin: 0 auto;
+/* Kategori etiketleri (açık renkli, oval) */
+.kategori {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
 }
-.donut::after {
-  content: "";
-  position: absolute;
-  inset: 24%;
-  background: var(--surface);
-  border-radius: 50%;
+.kat-kira       { background-color: #e0e7ff; }
+.kat-market     { background-color: #fef3c7; }
+.kat-ulasim     { background-color: #e0f2fe; }
+.kat-fatura     { background-color: #fee2e2; }
+.kat-eglence    { background-color: #fce7f3; }
+.kat-saglik     { background-color: #d1fae5; }
+.kat-diger      { background-color: #f1f5f9; }
+.kat-maas       { background-color: #dcfce7; }
+.kat-freelans   { background-color: #ccfbf1; }
+.kat-gelirdiger { background-color: #ecfccb; }
+
+/* En çok harcananlar listesi */
+.harcama-listesi {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
-.donut-center {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.harcama-listesi li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: bold;
+}
+.harcama-tutar {
+  float: right;
+}
+.harcama-listesi .progress {
+  height: 9px;
+  margin-top: 8px;
+}
+
+/* 3 adım kutuları */
+.adim {
   text-align: center;
 }
-.donut-center small { color: var(--muted); font-size: 0.78rem; }
-.donut-center strong { font-family: var(--font-heading); font-size: 1.2rem; }
 
-/* Yatay ilerleme cubugu: --value yuzde, --c renk */
-.meter {
-  height: 9px;
-  background: #e8edf3;
-  border-radius: 999px;
-  overflow: hidden;
+/* Harekete geçirme bandı */
+.cagri-bandi {
+  padding: 40px 24px;
+  border-radius: 22px;
+  background: linear-gradient(to right, #115e59, #0f766e);
+  color: white;
 }
-.meter > span {
-  display: block;
-  height: 100%;
-  width: min(100%, calc(var(--value) * 1%));
-  background: var(--c, var(--brand));
-  border-radius: 999px;
-  transition: width 0.6s ease;
-}
-.meter.is-ok { --c: var(--income); }
-.meter.is-warn { --c: #d97706; }
-.meter.is-over { --c: var(--expense); }
-
-.cat-row { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); }
-.cat-row:last-child { border-bottom: 0; }
-.cat-row .cat-name { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
-.cat-row .cat-value { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
-.cat-row .cat-value small { color: var(--muted); font-weight: 500; }
-.cat-row .meter { grid-column: 1 / -1; }
-.dot { width: 11px; height: 11px; border-radius: 50%; background: var(--c); flex: none; }
-
-/* Sutun grafik: --h yukseklik yuzdesi */
-.chart-cols {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 0.75rem;
-  height: 260px;
-  align-items: end;
-  border-bottom: 2px solid var(--border);
-  padding: 0 0.25rem;
-}
-.chart-group { height: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 6px; }
-.chart-bar {
-  width: min(28px, 38%);
-  height: calc(var(--h) * 1%);
-  border-radius: 8px 8px 0 0;
-  background: var(--c);
-  transition: filter 0.2s, transform 0.2s;
-}
-.chart-bar:hover { filter: brightness(1.12); transform: scaleY(1.02); transform-origin: bottom; }
-.bar-income { --c: var(--income); }
-.bar-expense { --c: #ef4444; }
-.bar-brand { --c: var(--brand); }
-.chart-labels { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 0.75rem; padding: 0.5rem 0.25rem 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
-.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 0 0 1rem; padding: 0; list-style: none; font-size: 0.85rem; color: var(--muted); }
-.legend li { display: flex; align-items: center; gap: 0.45rem; }
-
-.chart-hbar { display: grid; grid-template-columns: 90px 1fr 80px; align-items: center; gap: 0.75rem; margin-bottom: 0.7rem; font-size: 0.9rem; }
-.chart-hbar .meter { height: 14px; }
-.chart-hbar b { text-align: right; font-variant-numeric: tabular-nums; }
-
-/* ---------- 8. Form ---------- */
-.form-label { font-weight: 600; font-size: 0.9rem; }
-.form-control,
-.form-select {
-  border-radius: var(--radius-sm);
-  border: 1px solid #cbd5e1;
-  padding: 0.65rem 0.85rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.form-control:hover,
-.form-select:hover { border-color: var(--brand); }
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--brand);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 18%, transparent);
-}
-.form-check-input:checked { background-color: var(--brand); border-color: var(--brand); }
-.input-group-text { border-radius: var(--radius-sm); background: var(--brand-soft); border-color: #cbd5e1; color: var(--brand-dark); font-weight: 600; }
-.form-range { accent-color: var(--brand); }
-.select-auto { width: auto; min-width: 11rem; padding-right: 2.2rem; }
-
-/* Gelir / Gider secici (radio dugmeleri) */
-.tur-switch .btn { border-radius: var(--radius-sm); border: 2px solid var(--border); background: #fff; color: var(--text); }
-.btn-check:checked + .btn-tur-gelir { border-color: var(--income); background: var(--income-soft); color: var(--income); }
-.btn-check:checked + .btn-tur-gider { border-color: var(--expense); background: var(--expense-soft); color: var(--expense); }
-.btn-check:focus-visible + .btn { outline: 3px solid color-mix(in srgb, var(--brand) 45%, white); outline-offset: 2px; }
-
-/* Ana sayfadan #yeni-islem ile gelince formu vurgula (JavaScript'siz) */
-#yeni-islem:target { animation: vurgu 1.6s ease; }
-@keyframes vurgu {
-  0%, 100% { box-shadow: var(--shadow); }
-  30% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand) 28%, transparent); }
+.cagri-bandi h2 {
+  color: white;
 }
 
-/* ---------- 9. Bootstrap bilesen ayarlari ---------- */
-.nav-tabs { border-bottom: 2px solid var(--border); gap: 0.25rem; }
-.nav-tabs .nav-link { border: 0; border-radius: 10px 10px 0 0; color: var(--muted); font-weight: 600; padding: 0.7rem 1.2rem; }
-.nav-tabs .nav-link:hover { color: var(--brand); background: var(--brand-soft); }
-.nav-tabs .nav-link.active { color: var(--brand); background: var(--surface); box-shadow: inset 0 -3px 0 var(--brand); }
 
-.accordion {
-  --bs-accordion-border-color: var(--border);
-  --bs-accordion-border-radius: var(--radius);
-  --bs-accordion-inner-border-radius: calc(var(--radius) - 1px);
-  --bs-accordion-active-bg: var(--brand-soft);
-  --bs-accordion-active-color: var(--brand-dark);
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 18%, transparent);
+/* ---------- 5b. İç sayfalar ---------- */
+
+/* Sayfanın en üstündeki yeşil başlık bandı */
+.sayfa-basligi {
+  padding-top: 40px;
+  padding-bottom: 36px;
+  background: linear-gradient(to right, #115e59, #0f766e);
+  color: white;
 }
-.accordion-button { font-weight: 600; font-family: var(--font-heading); }
+.sayfa-basligi h1 {
+  font-size: 34px;
+}
+.sayfa-basligi p {
+  margin-bottom: 0;
+  color: #d1fae5;
+}
+.sayfa-basligi .yol {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.yol a:link, .yol a:visited {
+  color: white;
+}
 
-.carousel { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #f1f5f9; }
-/* Yazi, gorselin ustune binmesin diye altta ayri bir serit olarak durur */
-.carousel-caption {
-  position: relative;
-  inset: auto;
-  background: #0f172a;
+/* Form */
+.form-etiket {
+  font-size: 15px;
+  font-weight: bold;
+}
+.form-control {
+  border-radius: 10px;
+}
+.form-control:hover, .form-control:focus {
+  border-color: #0f766e;
+}
+
+/* Tablonun sonundaki toplam satırları */
+.toplam-satir td {
+  font-weight: bold;
+  border-top: 2px solid #e2e8f0;
+}
+
+/* Sayfa numaraları: aktif sayfa yeşil */
+.page-item.active .page-link {
+  background-color: #0f766e;
+  border-color: #0f766e;
+}
+.page-link {
+  color: #0f766e;
+}
+
+
+/* ---------- 5c. Rapor sayfaları ---------- */
+
+/* Dönem seçimi (Kategori Grafikleri) */
+.donem-secimi .form-control {
+  display: inline;
+  width: 200px;
+}
+
+/* Ay seçimi (Aylık Rapor): butonlar ve başlık yan yana */
+.ay-secimi h2 {
+  display: inline;
+  margin: 0 12px;
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+/* Son 6 ay grafiği: her ay için gelir ve gider çubuğu */
+.ay-satiri {
+  overflow: auto;                  /* float'lı ay adını kutunun içinde tutar */
+  margin-bottom: 14px;
+}
+.ay-adi {
+  float: left;
+  width: 50px;
+  font-weight: bold;
+  color: #64748b;
+}
+.ay-satiri .progress {
+  height: 18px;
+  margin-left: 60px;               /* ay adının yanından başlasın */
+  font-size: 11px;
+}
+
+/* Açılır bölümler (Bootstrap Collapse) */
+.acilir {
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+.acilir-baslik {
+  width: 100%;
+  padding: 14px 18px;
   text-align: left;
-  padding: 1rem 1.5rem 2.8rem;
+  font-weight: bold;
+  color: #0f172a;
 }
-.carousel-caption h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
-.carousel-caption p { margin: 0; font-size: 0.9rem; }
-.carousel-indicators [data-bs-target] { background-color: var(--brand); }
-
-.alert { border-radius: var(--radius-sm); }
-.modal-content { border: 0; border-radius: var(--radius); }
-.modal-header, .modal-footer { border-color: var(--border); }
-.pagination { --bs-pagination-active-bg: var(--brand); --bs-pagination-active-border-color: var(--brand); --bs-pagination-color: var(--brand); --bs-pagination-hover-color: var(--brand-dark); }
-
-/* ---------- 10. Yardimci siniflar ve responsive ---------- */
-.text-income { color: var(--income); }
-.text-expense { color: var(--expense); }
-.text-muted-2 { color: var(--muted); }
-.fw-heading { font-family: var(--font-heading); }
-
-@media (max-width: 991.98px) {
-  .navbar-collapse { padding: 0.8rem 0 1rem; }
-  .navbar .nav-link { border-radius: var(--radius-sm); }
-  .hero { padding: 2.6rem 0; }
-  .section { padding: 2.5rem 0; }
+.acilir-baslik:hover {
+  background-color: #e6f4f1;
+  color: #115e59;
+}
+.acilir-icerik {
+  margin: 0;
+  padding: 0 18px 16px 18px;
+  color: #64748b;
 }
 
-@media (max-width: 575.98px) {
-  .donut { width: 190px; }
-  .chart-cols { height: 200px; gap: 0.4rem; }
-  .chart-bar { width: min(16px, 40%); }
-  .chart-hbar { grid-template-columns: 70px 1fr 64px; font-size: 0.8rem; }
-  .stat-value { font-size: 1.35rem; }
-  .cta-band { padding: 1.6rem; }
-  .table-modern { font-size: 0.85rem; }
+/* Bütçe limit kutularındaki durum rozeti: sağ üstte */
+.durum {
+  float: right;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+/* Limit formu: üstünde ince bir çizgi */
+.limit-formu {
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
 }
 
-@media print {
-  .site-header, .site-footer, .btn { display: none !important; }
+
+/* ---------- 5d. Hakkında ve İletişim ---------- */
+
+/* "Neler yapılabiliyor?" listesi */
+.onay-listesi {
+  list-style-type: none;
+  padding: 0;
+}
+.onay-listesi li {
+  margin-bottom: 8px;
+}
+
+/* Ekip kartları */
+.ekip-karti {
+  text-align: center;
+}
+.ekip-karti img {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+}
+.ekip-karti h3 {
+  font-size: 16px;
+}
+
+/* Teknoloji rozetleri */
+.teknolojiler .badge {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* İletişim sağ sütun: kutular alt alta durduğu için yükseklik içeriğe göre olsun */
+.yan-sutun .kutu {
+  height: auto;
+}
+
+/* İletişim bilgi kutuları: ikon solda, yazı sağda */
+.bilgi-kutusu {
+  overflow: auto;
+}
+.bilgi-kutusu .ikon {
+  float: left;
+  margin-bottom: 0;
+}
+.bilgi-kutusu p {
+  margin-left: 64px;               /* yazı ikonun altına kaymasın */
+}
+
+
+/* ---------- 6. Mobil ve tablet (992px'ten dar ekranlar) ---------- */
+@media screen and (max-width: 991px) {
+  .hamburger {
+    display: block;
+  }
+  .menu {
+    display: none;             /* menü gizli */
+    position: absolute;        /* hamburgerin altında açılır */
+    right: 0;
+    z-index: 10;
+    width: 220px;
+    padding: 6px;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+  }
+  .menu li {
+    float: none;               /* linkler alt alta */
+  }
+  .menu-alani:hover .menu {
+    display: block;            /* üzerine gelince / dokununca açılır */
+  }
+  .menu a {
+    margin: 2px 0;
+  }
+  .menu .menu-buton {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+
+/* ---------- 7. Telefon (576px'ten dar ekranlar) ---------- */
+@media screen and (max-width: 575px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  .ozet-deger {
+    font-size: 22px;
+  }
 }

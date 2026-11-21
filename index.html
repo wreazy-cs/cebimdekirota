@@ -1,307 +1,294 @@
+
 <!DOCTYPE html>
-<html lang="tr" data-palette="zumrut">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Günlük gelir ve giderlerini kaydet, kategori bazlı grafiklerle incele ve aylık raporunu gör.">
-  <title>Ana Sayfa | Bütçem</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <title>Ana Sayfa | CebimdekiRota</title>
+  <link rel="icon" href="img/favicon.svg">
 
-  <!-- Bootstrap 5 ve Bootstrap Icons (CDN) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- Google Fonts: 3 palet icin gereken aileler. Palet secilince kullanilmayanlari silin -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Poppins:wght@600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site stilleri: once degiskenler, sonra ortak stiller -->
-  <link rel="stylesheet" href="css/variables.css">
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Kendi stillerimiz (Bootstrap'ten sonra gelmeli) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ===== Ust menu (tum sayfalarda ayni) ===== -->
-  <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg" aria-label="Ana menü">
+
+  <!-- ===== NAVBAR (tüm sayfalarda aynı) ===== -->
+  <header>
+    <nav class="menu-bar">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34">
-          <span>Bütçem</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenu"
-                aria-controls="anaMenu" aria-expanded="false" aria-label="Menüyü aç veya kapat">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="anaMenu">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Ana Sayfa</a></li>
-            <li class="nav-item"><a class="nav-link" href="islemler.html">İşlemler</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">Raporlar</a>
-              <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="kategoriler.html"><i class="bi bi-pie-chart"></i>Kategori Grafikleri</a></li>
-            <li><a class="dropdown-item" href="aylik-rapor.html"><i class="bi bi-calendar3"></i>Aylık Rapor</a></li>
-            <li><a class="dropdown-item" href="butce.html"><i class="bi bi-bullseye"></i>Bütçe Hedefleri</a></li>
-              </ul>
+        <a href="index.html" class="logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</a>
+
+        <div class="menu-alani">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+          <ul class="menu">
+            <li><a href="index.html" class="aktif">Ana Sayfa</a></li>
+            <li><a href="islemler.html">İşlemler</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Raporlar</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="kategoriler.html">Kategori Grafikleri</a>
+                <a class="dropdown-item" href="aylik-rapor.html">Aylık Rapor</a>
+                <a class="dropdown-item" href="butce.html">Bütçe Hedefleri</a>
+              </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
-            <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <a class="btn btn-brand" href="islemler.html#yeni-islem"><i class="bi bi-plus-lg"></i> İşlem Ekle</a>
-            </li>
+            <li><a href="hakkinda.html">Hakkında</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+            <li><a href="islemler.html#yeni-islem" class="menu-buton">+ İşlem Ekle</a></li>
           </ul>
         </div>
+
+        <div style="clear: both;"></div>
       </div>
     </nav>
   </header>
 
-  <main id="icerik">
+  <main>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero" aria-labelledby="hero-baslik">
+    <!-- ===== GİRİŞ (HERO) ===== -->
+    <section class="hero">
       <div class="container">
-        <div class="row align-items-center g-4 g-lg-5">
-          <div class="col-lg-6">
-            <p class="badge text-bg-light border mb-3 px-3 py-2"><i class="bi bi-stars text-warning"></i> Kişisel bütçe takibi</p>
-            <h1 id="hero-baslik">Paranın nereye gittiğini <span>tek ekranda</span> gör.</h1>
-            <p class="lead text-muted-2 mt-3">Günlük gelir ve giderlerini kaydet, kategori bazlı grafiklerle incele, ay sonunda raporunu al. Bütçeni tahminle değil verilerle yönet.</p>
-            <div class="d-flex flex-wrap gap-2 mt-4">
-              <a class="btn btn-brand btn-lg" href="islemler.html#yeni-islem"><i class="bi bi-plus-lg"></i> İşlem Ekle</a>
-              <a class="btn btn-outline-brand btn-lg" href="aylik-rapor.html"><i class="bi bi-bar-chart-line"></i> Aylık Raporu Gör</a>
-            </div>
-            <ul class="hero-points">
-              <li><i class="bi bi-check-circle-fill"></i> Kategori bazlı grafikler</li>
-              <li><i class="bi bi-check-circle-fill"></i> Aylık rapor</li>
-              <li><i class="bi bi-check-circle-fill"></i> Bütçe limitleri</li>
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <span class="badge etiket mb-3">✨ Kişisel bütçe takibi</span>
+            <h1>Paranın nereye gittiğini <span>tek ekranda</span> gör.</h1>
+            <p class="lead soluk mt-3">Günlük gelir ve giderlerini kaydet, kategori bazlı grafiklerle incele, ay sonunda raporunu al. Bütçeni tahminle değil verilerle yönet.</p>
+            <a href="islemler.html#yeni-islem" class="btn buton-ana btn-lg mr-2 mb-2">+ İşlem Ekle</a>
+            <a href="aylik-rapor.html" class="btn buton-cerceve btn-lg mb-2">Aylık Raporu Gör</a>
+            <ul class="hero-maddeler">
+              <li>✔ Kategori bazlı grafikler</li>
+              <li>✔ Aylık rapor</li>
+              <li>✔ Bütçe limitleri</li>
             </ul>
           </div>
           <div class="col-lg-6">
-            <img class="img-fluid" src="img/hero-illustration.svg" width="560" height="420"
-                 alt="Bakiye, halka grafik ve sütun grafik gösteren bütçe paneli illüstrasyonu">
+            <img src="img/hero-illustration.svg" class="img-fluid" alt="Bakiye, halka grafik ve sütun grafik gösteren bütçe paneli çizimi">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Bilgi uyarisi (Bootstrap Alert) ===== -->
+    <!-- ===== BİLGİ UYARISI (Bootstrap Alert) ===== -->
     <div class="container mt-4">
-      <div class="alert alert-info alert-dismissible fade show d-flex align-items-start gap-2" role="alert">
-        <i class="bi bi-info-circle-fill mt-1"></i>
-        <div>Bu sayfadaki rakamlar <strong>örnek verilerdir</strong>. Sistem tamamlandığında burada kendi kayıtların görünecek.</div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Uyarıyı kapat"></button>
+      <div class="alert alert-info">
+        ℹ️ Bu sayfadaki rakamlar <strong>örnek verilerdir</strong>. Sistem tamamlandığında burada kendi kayıtların görünecek.
       </div>
     </div>
 
-    <!-- ===== Aylik ozet kutulari ===== -->
-    <section class="section pt-3" aria-labelledby="ozet-baslik">
+    <!-- ===== AYLIK ÖZET KUTULARI ===== -->
+    <section class="bolum">
       <div class="container">
-        <div class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-3">
-          <div>
-            <h2 class="section-title" id="ozet-baslik">Kasım 2026 özeti</h2>
-            <p class="section-lead mb-0">Bu ayın gelir, gider ve birikim durumu.</p>
+        <h2>Kasım 2026 özeti</h2>
+        <p class="soluk mb-4">Bu ayın gelir, gider ve birikim durumu.</p>
+
+        <div class="row">
+          <div class="col-sm-6 col-lg-3 mb-3">
+            <article class="kutu ozet">
+              <div class="ikon">💼</div>
+              <p class="ozet-baslik">Güncel bakiye</p>
+              <p class="ozet-deger">48.350 ₺</p>
+              <p class="ozet-not">Tüm hesaplar toplamı</p>
+            </article>
           </div>
-        </div>
-        <div class="row g-3">
-          <div class="col-sm-6 col-xl-3">
-            <article class="card card-soft card-hover h-100"><div class="card-body stat-card">
-              <span class="stat-icon"><i class="bi bi-wallet2"></i></span>
-              <div><p class="stat-label">Güncel bakiye</p>
-                <p class="stat-value money">48.350 ₺</p>
-                <p class="stat-note">Tüm hesaplar toplamı</p></div>
-            </div></article>
+          <div class="col-sm-6 col-lg-3 mb-3">
+            <article class="kutu ozet">
+              <div class="ikon ikon-gelir">⬇️</div>
+              <p class="ozet-baslik">Toplam gelir</p>
+              <p class="ozet-deger gelir">40.000 ₺</p>
+              <p class="ozet-not"><span class="badge bg-danger text-white">%9,1 düşük</span> Ekim'e göre</p>
+            </article>
           </div>
-          <div class="col-sm-6 col-xl-3">
-            <article class="card card-soft card-hover h-100"><div class="card-body stat-card">
-              <span class="stat-icon is-income"><i class="bi bi-arrow-down-left-circle"></i></span>
-              <div><p class="stat-label">Toplam gelir</p>
-                <p class="stat-value text-income money">40.000 ₺</p>
-                <span class="badge-delta is-bad">%9,1 düşük</span> <small class="text-muted-2">Ekim'e göre</small></div>
-            </div></article>
+          <div class="col-sm-6 col-lg-3 mb-3">
+            <article class="kutu ozet">
+              <div class="ikon ikon-gider">⬆️</div>
+              <p class="ozet-baslik">Toplam gider</p>
+              <p class="ozet-deger gider">23.100 ₺</p>
+              <p class="ozet-not"><span class="badge bg-success text-white">%15,4 düşük</span> Ekim'e göre</p>
+            </article>
           </div>
-          <div class="col-sm-6 col-xl-3">
-            <article class="card card-soft card-hover h-100"><div class="card-body stat-card">
-              <span class="stat-icon is-expense"><i class="bi bi-arrow-up-right-circle"></i></span>
-              <div><p class="stat-label">Toplam gider</p>
-                <p class="stat-value text-expense money">23.100 ₺</p>
-                <span class="badge-delta is-good">%15,4 düşük</span> <small class="text-muted-2">Ekim'e göre</small></div>
-            </div></article>
-          </div>
-          <div class="col-sm-6 col-xl-3">
-            <article class="card card-soft card-hover h-100"><div class="card-body stat-card">
-              <span class="stat-icon is-accent"><i class="bi bi-piggy-bank"></i></span>
-              <div><p class="stat-label">Tasarruf oranı</p>
-                <p class="stat-value">%42,3</p>
-                <p class="stat-note">Net birikim 16.900,00 ₺</p></div>
-            </div></article>
+          <div class="col-sm-6 col-lg-3 mb-3">
+            <article class="kutu ozet">
+              <div class="ikon ikon-vurgu">🐷</div>
+              <p class="ozet-baslik">Tasarruf oranı</p>
+              <p class="ozet-deger">%42,3</p>
+              <p class="ozet-not">Net birikim 16.900 ₺</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Son islemler ve kategori ozeti ===== -->
-    <section class="section pt-0" aria-labelledby="son-baslik">
+    <!-- ===== SON İŞLEMLER ve EN ÇOK HARCANANLAR ===== -->
+    <section class="bolum pt-0">
       <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <div class="card card-soft h-100"><div class="card-body">
-              <div class="card-title-row">
-                <h2 id="son-baslik">Son işlemler</h2>
-                <a class="btn btn-outline-brand btn-sm" href="islemler.html">Tümünü gör</a>
-              </div>
+        <div class="row">
+
+          <!-- Sol: son işlemler tablosu -->
+          <div class="col-lg-8 mb-4">
+            <div class="kutu">
+              <h2 class="kutu-baslik">Son işlemler <a href="islemler.html" class="btn buton-cerceve btn-sm">Tümünü gör</a></h2>
               <div class="table-responsive">
-                <table class="table table-modern">
-                  <caption class="visually-hidden">Son beş gelir ve gider işlemi</caption>
-                  <thead><tr><th scope="col">Tarih</th><th scope="col">Açıklama</th><th scope="col">Kategori</th><th scope="col">Tür</th><th scope="col" class="text-end">Tutar</th></tr></thead>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Tarih</th>
+                      <th>Açıklama</th>
+                      <th>Kategori</th>
+                      <th>Tür</th>
+                      <th class="text-right">Tutar</th>
+                    </tr>
+                  </thead>
                   <tbody>
-        <tr data-id="110" data-type="gider" data-category="market">
-          <td><time datetime="2026-11-17">17.11.2026</time></td>
-          <td>Haftalık market alışverişi</td>
-          <td><span class="badge-cat cat-market">Market</span></td>
-          <td><span class="badge-tur is-gider">Gider</span></td>
-          <td class="amount amount-gider">-640,00 ₺</td>
-        </tr>
-        <tr data-id="109" data-type="gider" data-category="ulasim">
-          <td><time datetime="2026-11-16">16.11.2026</time></td>
-          <td>İstanbulkart yükleme</td>
-          <td><span class="badge-cat cat-ulasim">Ulaşım</span></td>
-          <td><span class="badge-tur is-gider">Gider</span></td>
-          <td class="amount amount-gider">-250,00 ₺</td>
-        </tr>
-        <tr data-id="108" data-type="gelir" data-category="freelans">
-          <td><time datetime="2026-11-15">15.11.2026</time></td>
-          <td>Web tasarım projesi</td>
-          <td><span class="badge-cat cat-freelans">Freelans</span></td>
-          <td><span class="badge-tur is-gelir">Gelir</span></td>
-          <td class="amount amount-gelir">+6.500,00 ₺</td>
-        </tr>
-        <tr data-id="107" data-type="gider" data-category="eglence">
-          <td><time datetime="2026-11-14">14.11.2026</time></td>
-          <td>Sinema bileti</td>
-          <td><span class="badge-cat cat-eglence">Eğlence</span></td>
-          <td><span class="badge-tur is-gider">Gider</span></td>
-          <td class="amount amount-gider">-320,00 ₺</td>
-        </tr>
-        <tr data-id="106" data-type="gider" data-category="fatura">
-          <td><time datetime="2026-11-12">12.11.2026</time></td>
-          <td>Elektrik faturası</td>
-          <td><span class="badge-cat cat-fatura">Fatura</span></td>
-          <td><span class="badge-tur is-gider">Gider</span></td>
-          <td class="amount amount-gider">-540,00 ₺</td>
-        </tr>
+                    <tr>
+                      <td>17.11.2026</td>
+                      <td>Haftalık market alışverişi</td>
+                      <td><span class="kategori kat-market">Market</span></td>
+                      <td><span class="badge bg-danger text-white">Gider</span></td>
+                      <td class="text-right tutar gider">-640,00 ₺</td>
+                    </tr>
+                    <tr>
+                      <td>16.11.2026</td>
+                      <td>İstanbulkart yükleme</td>
+                      <td><span class="kategori kat-ulasim">Ulaşım</span></td>
+                      <td><span class="badge bg-danger text-white">Gider</span></td>
+                      <td class="text-right tutar gider">-250,00 ₺</td>
+                    </tr>
+                    <tr>
+                      <td>15.11.2026</td>
+                      <td>Web tasarım projesi</td>
+                      <td><span class="kategori kat-freelans">Freelans</span></td>
+                      <td><span class="badge bg-success text-white">Gelir</span></td>
+                      <td class="text-right tutar gelir">+6.500,00 ₺</td>
+                    </tr>
+                    <tr>
+                      <td>14.11.2026</td>
+                      <td>Sinema bileti</td>
+                      <td><span class="kategori kat-eglence">Eğlence</span></td>
+                      <td><span class="badge bg-danger text-white">Gider</span></td>
+                      <td class="text-right tutar gider">-320,00 ₺</td>
+                    </tr>
+                    <tr>
+                      <td>12.11.2026</td>
+                      <td>Elektrik faturası</td>
+                      <td><span class="kategori kat-fatura">Fatura</span></td>
+                      <td><span class="badge bg-danger text-white">Gider</span></td>
+                      <td class="text-right tutar gider">-540,00 ₺</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-            </div></div>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card card-soft h-100"><div class="card-body">
-              <div class="card-title-row">
-                <h2>En çok harcananlar</h2>
-                <a href="kategoriler.html" class="small fw-semibold">Grafikler</a>
-              </div>
-              <ul class="list-unstyled m-0">
-          <li class="cat-row cat-kira">
-            <span class="cat-name"><span class="dot"></span>Kira / Konut</span>
-            <span class="cat-value">9.000,00 ₺</span>
-            <div class="meter" style="--value:39.0" role="img" aria-label="Kira / Konut payı yüzde 39,0"><span></span></div>
-          </li>
-          <li class="cat-row cat-market">
-            <span class="cat-name"><span class="dot"></span>Market</span>
-            <span class="cat-value">5.400,00 ₺</span>
-            <div class="meter" style="--value:23.4" role="img" aria-label="Market payı yüzde 23,4"><span></span></div>
-          </li>
-          <li class="cat-row cat-ulasim">
-            <span class="cat-name"><span class="dot"></span>Ulaşım</span>
-            <span class="cat-value">2.100,00 ₺</span>
-            <div class="meter" style="--value:9.1" role="img" aria-label="Ulaşım payı yüzde 9,1"><span></span></div>
-          </li>
-          <li class="cat-row cat-fatura">
-            <span class="cat-name"><span class="dot"></span>Fatura</span>
-            <span class="cat-value">2.700,00 ₺</span>
-            <div class="meter" style="--value:11.7" role="img" aria-label="Fatura payı yüzde 11,7"><span></span></div>
-          </li>
+
+          <!-- Sağ: en çok harcanan kategoriler (Bootstrap progress bar) -->
+          <div class="col-lg-4 mb-4">
+            <div class="kutu">
+              <h2 class="kutu-baslik">En çok harcananlar <a href="kategoriler.html" class="small">Grafikler</a></h2>
+              <ul class="harcama-listesi">
+                <li>
+                  <span class="harcama-tutar">9.000 ₺</span>Kira / Konut
+                  <div class="progress"><div class="progress-bar" style="width:39%; background-color:#6366f1;"></div></div>
+                </li>
+                <li>
+                  <span class="harcama-tutar">5.400 ₺</span>Market
+                  <div class="progress"><div class="progress-bar" style="width:23%; background-color:#f59e0b;"></div></div>
+                </li>
+                <li>
+                  <span class="harcama-tutar">2.700 ₺</span>Fatura
+                  <div class="progress"><div class="progress-bar" style="width:12%; background-color:#ef4444;"></div></div>
+                </li>
+                <li>
+                  <span class="harcama-tutar">2.100 ₺</span>Ulaşım
+                  <div class="progress"><div class="progress-bar" style="width:9%; background-color:#0ea5e9;"></div></div>
+                </li>
               </ul>
-            </div></div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ===== Nasil calisir (Carousel) ===== -->
-    <section class="section pt-0" aria-labelledby="nasil-baslik">
+    <!-- ===== 3 ADIMDA NASIL ÇALIŞIR? ===== -->
+    <section class="bolum pt-0">
       <div class="container">
-        <h2 class="section-title" id="nasil-baslik">3 adımda nasıl çalışır?</h2>
-        <p class="section-lead mb-4">Kaydet, kategorilere ayır, raporunu al.</p>
-        <div id="adimlar" class="carousel slide" data-bs-ride="carousel" aria-label="Kullanım adımları">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#adimlar" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Adım 1"></button>
-            <button type="button" data-bs-target="#adimlar" data-bs-slide-to="1" aria-label="Adım 2"></button>
-            <button type="button" data-bs-target="#adimlar" data-bs-slide-to="2" aria-label="Adım 3"></button>
+        <h2>3 adımda nasıl çalışır?</h2>
+        <p class="soluk mb-4">Kaydet, kategorilere ayır, raporunu al.</p>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <article class="kutu adim">
+              <img src="img/slide-1.svg" class="img-fluid rounded mb-3" alt="Gelir veya gider türü seçilen ve tutarı girilen işlem formu">
+              <h3>1. İşlemini kaydet</h3>
+              <p class="soluk">Gelir mi gider mi, ne kadar ve hangi kategori. Birkaç saniyede biter.</p>
+            </article>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/slide-1.svg" class="d-block w-100" width="1200" height="420" alt="Gelir veya gider türü seçilen ve tutarı girilen işlem formu">
-              <div class="carousel-caption"><h3>1. İşlemini kaydet</h3><p>Gelir mi gider mi, ne kadar ve hangi kategori. Birkaç saniyede biter.</p></div>
-            </div>
-            <div class="carousel-item">
-              <img src="img/slide-2.svg" class="d-block w-100" width="1200" height="420" alt="Renkli halka grafik ve yanında kategori etiketleri">
-              <div class="carousel-caption"><h3>2. Kategorilere ayır</h3><p>Kira, market, ulaşım gibi gruplarla paranın nereye gittiğini gör.</p></div>
-            </div>
-            <div class="carousel-item">
-              <img src="img/slide-3.svg" class="d-block w-100" width="1200" height="420" alt="Aylık gelir ve gider sütun grafiği">
-              <div class="carousel-caption"><h3>3. Aylık raporunu al</h3><p>Aylar arası farkları karşılaştır, bütçeni buna göre ayarla.</p></div>
-            </div>
+          <div class="col-md-4 mb-4">
+            <article class="kutu adim">
+              <img src="img/slide-2.svg" class="img-fluid rounded mb-3" alt="Renkli halka grafik ve yanında kategori etiketleri">
+              <h3>2. Kategorilere ayır</h3>
+              <p class="soluk">Kira, market, ulaşım gibi gruplarla paranın nereye gittiğini gör.</p>
+            </article>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#adimlar" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Önceki</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#adimlar" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Sonraki</span>
-          </button>
+          <div class="col-md-4 mb-4">
+            <article class="kutu adim">
+              <img src="img/slide-3.svg" class="img-fluid rounded mb-3" alt="Aylık gelir ve gider sütun grafiği">
+              <h3>3. Aylık raporunu al</h3>
+              <p class="soluk">Aylar arası farkları karşılaştır, bütçeni buna göre ayarla.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Ozellikler ===== -->
-    <section class="section pt-0" aria-labelledby="ozellik-baslik">
+    <!-- ===== NEDEN CebimdekiRota? ===== -->
+    <section class="bolum pt-0">
       <div class="container">
-        <h2 class="section-title mb-4" id="ozellik-baslik">Neden Bütçem?</h2>
-        <div class="row g-3">
-          <div class="col-md-4"><article class="card card-soft card-hover feature-card h-100"><div class="card-body">
-            <span class="stat-icon"><i class="bi bi-pencil-square"></i></span>
-            <h3>Hızlı kayıt</h3><p>Tek formla gelir ve gider ekle. Tekrarlayan ödemeleri bir kez tanımla.</p>
-          </div></article></div>
-          <div class="col-md-4"><article class="card card-soft card-hover feature-card h-100"><div class="card-body">
-            <span class="stat-icon is-income"><i class="bi bi-pie-chart"></i></span>
-            <h3>Anlaşılır grafikler</h3><p>Kategori bazlı halka ve çubuk grafiklerle harcama alışkanlığını gör.</p>
-          </div></article></div>
-          <div class="col-md-4"><article class="card card-soft card-hover feature-card h-100"><div class="card-body">
-            <span class="stat-icon is-accent"><i class="bi bi-bullseye"></i></span>
-            <h3>Bütçe limitleri</h3><p>Kategori başına aylık limit koy, limite yaklaşınca haberin olsun.</p>
-          </div></article></div>
+        <h2 class="mb-4">Neden CebimdekiRota?</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon">✏️</div>
+              <h3>Hızlı kayıt</h3>
+              <p class="soluk">Tek formla gelir ve gider ekle. Tekrarlayan ödemeleri bir kez tanımla.</p>
+            </article>
+          </div>
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon ikon-gelir">📊</div>
+              <h3>Anlaşılır grafikler</h3>
+              <p class="soluk">Kategori bazlı çubuk grafiklerle harcama alışkanlığını gör.</p>
+            </article>
+          </div>
+          <div class="col-md-4 mb-4">
+            <article class="kutu">
+              <div class="ikon ikon-vurgu">🎯</div>
+              <h3>Bütçe limitleri</h3>
+              <p class="soluk">Kategori başına aylık limit koy, limite yaklaşınca haberin olsun.</p>
+            </article>
+          </div>
         </div>
 
-        <div class="cta-band mt-5 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
-          <div><h2 class="h3 mb-1">İlk işlemini şimdi ekle</h2><p class="mb-0">Bakiyen ve grafiklerin hemen güncellenir.</p></div>
-          <a class="btn btn-light btn-lg text-nowrap fw-bold" href="islemler.html#yeni-islem">İşlem Ekle <i class="bi bi-arrow-right"></i></a>
+        <!-- Harekete geçirme bandı -->
+        <div class="cagri-bandi text-center mt-4">
+          <h2>İlk işlemini şimdi ekle</h2>
+          <p>Bakiyen ve grafiklerin hemen güncellenir.</p>
+          <a href="islemler.html#yeni-islem" class="btn btn-light btn-lg">İşlem Ekle →</a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- ===== Alt bilgi (tum sayfalarda ayni) ===== -->
-  <footer class="site-footer">
+  <!-- ===== FOOTER (tüm sayfalarda aynı) ===== -->
+  <footer class="site-footer text-center">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <a class="d-inline-flex align-items-center gap-2 mb-3 text-white fw-heading fs-4 fw-bold" href="index.html">
-            <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34" loading="lazy"> Bütçem
-          </a>
-          <p class="mb-0">Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <p class="footer-logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</p>
+          <p>Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-3 mb-4">
           <h2>Sayfalar</h2>
           <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
@@ -310,7 +297,7 @@
             <li><a href="iletisim.html">İletişim</a></li>
           </ul>
         </div>
-        <div class="col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-4">
           <h2>Raporlar</h2>
           <ul>
             <li><a href="kategoriler.html">Kategori Grafikleri</a></li>
@@ -319,14 +306,13 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>&copy; 2026 Bütçem. Web Programlama 1 dönem ödevi.</span>
-        <span>Kırklareli Üniversitesi, Yazılım Mühendisliği</span>
-      </div>
+      <p class="footer-alt">&copy; 2026 CebimdekiRota ·  Kırklareli Üniversitesi Yazılım Mühendisliği</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS: menü, dropdown, modal, sekme, akordeon ve carousel icin gerekli (kendi JavaScript kodumuz yok) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Açılır menü için gerekli JavaScript kütüphaneleri (sayfanın en sonunda) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

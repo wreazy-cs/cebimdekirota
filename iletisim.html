@@ -1,191 +1,169 @@
+
 <!DOCTYPE html>
-<html lang="tr" data-palette="zumrut">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bütçem ekibine soru, öneri veya hata bildirimi gönder.">
-  <title>İletişim | Bütçem</title>
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <title>İletişim | CebimdekiRota</title>
+  <link rel="icon" href="img/favicon.svg">
 
-  <!-- Bootstrap 5 ve Bootstrap Icons (CDN) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <!-- Google Fonts: 3 palet icin gereken aileler. Palet secilince kullanilmayanlari silin -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=Poppins:wght@600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Site stilleri: once degiskenler, sonra ortak stiller -->
-  <link rel="stylesheet" href="css/variables.css">
+  <!-- Bootstrap CSS (CDN) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Kendi stillerimiz (Bootstrap'ten sonra gelmeli) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ===== Ust menu (tum sayfalarda ayni) ===== -->
-  <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg" aria-label="Ana menü">
+
+  <!-- ===== NAVBAR (tüm sayfalarda aynı) ===== -->
+  <header>
+    <nav class="menu-bar">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34">
-          <span>Bütçem</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenu"
-                aria-controls="anaMenu" aria-expanded="false" aria-label="Menüyü aç veya kapat">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="anaMenu">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-            <li class="nav-item"><a class="nav-link" href="islemler.html">İşlemler</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button"
-                 data-bs-toggle="dropdown" aria-expanded="false">Raporlar</a>
-              <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="kategoriler.html"><i class="bi bi-pie-chart"></i>Kategori Grafikleri</a></li>
-            <li><a class="dropdown-item" href="aylik-rapor.html"><i class="bi bi-calendar3"></i>Aylık Rapor</a></li>
-            <li><a class="dropdown-item" href="butce.html"><i class="bi bi-bullseye"></i>Bütçe Hedefleri</a></li>
-              </ul>
+        <a href="index.html" class="logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</a>
+
+        <div class="menu-alani">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+          <ul class="menu">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="islemler.html">İşlemler</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Raporlar</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="kategoriler.html">Kategori Grafikleri</a>
+                <a class="dropdown-item" href="aylik-rapor.html">Aylık Rapor</a>
+                <a class="dropdown-item" href="butce.html">Bütçe Hedefleri</a>
+              </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="iletisim.html">İletişim</a></li>
-            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <a class="btn btn-brand" href="islemler.html#yeni-islem"><i class="bi bi-plus-lg"></i> İşlem Ekle</a>
-            </li>
+            <li><a href="hakkinda.html">Hakkında</a></li>
+            <li><a href="iletisim.html" class="aktif">İletişim</a></li>
+            <li><a href="islemler.html#yeni-islem" class="menu-buton">+ İşlem Ekle</a></li>
           </ul>
         </div>
+
+        <div style="clear: both;"></div>
       </div>
     </nav>
   </header>
 
-  <!-- ===== Sayfa basligi ===== -->
-  <section class="page-header">
+  <!-- ===== SAYFA BAŞLIĞI ===== -->
+  <section class="sayfa-basligi">
     <div class="container">
-      <nav aria-label="Sayfa yolu">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li>
-          <li class="breadcrumb-item active" aria-current="page">İletişim</li>
-        </ol>
-      </nav>
+      <p class="yol"><a href="index.html">Ana Sayfa</a> / İletişim</p>
       <h1>İletişim</h1>
       <p>Soru, öneri veya geri bildirimlerini bize yaz.</p>
     </div>
   </section>
 
-  <main id="icerik" class="section">
+  <main class="bolum">
     <div class="container">
-      <div class="row g-4">
 
-        <!-- ===== Iletisim formu =====
-             BACKEND NOTU: form POST /api/iletisim ile baglanacak.
-             Tarayicinin kendi dogrulamasi (required, type=email) calisir. -->
-        <div class="col-lg-7">
-          <section class="card card-soft" aria-labelledby="iletisim-baslik">
-            <div class="card-body p-4">
-              <h2 class="h4 mb-3" id="iletisim-baslik">Bize yazın</h2>
-              <form action="#" method="post">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="ad" class="form-label">Ad Soyad</label>
-                    <input type="text" class="form-control" id="ad" name="ad_soyad" autocomplete="name" placeholder="Adınız Soyadınız" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="eposta" class="form-label">E-posta</label>
-                    <input type="email" class="form-control" id="eposta" name="eposta" autocomplete="email" placeholder="ornek@mail.com" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="telefon" class="form-label">Telefon <span class="text-muted-2 fw-normal">(isteğe bağlı)</span></label>
-                    <input type="tel" class="form-control" id="telefon" name="telefon" autocomplete="tel" placeholder="05XX XXX XX XX">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="konu" class="form-label">Konu</label>
-                    <select class="form-select" id="konu" name="konu" required>
-                      <option value="" selected disabled>Konu seçin</option>
-                      <option value="oneri">Öneri</option>
-                      <option value="hata">Hata bildirimi</option>
-                      <option value="soru">Soru</option>
-                      <option value="diger">Diğer</option>
-                    </select>
-                  </div>
+      <div class="row">
 
-                  <fieldset class="col-12">
-                    <legend class="form-label">Size nasıl dönelim?</legend>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="donus" id="donus-eposta" value="eposta" checked>
-                      <label class="form-check-label" for="donus-eposta">E-posta ile</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="donus" id="donus-telefon" value="telefon">
-                      <label class="form-check-label" for="donus-telefon">Telefon ile</label>
-                    </div>
-                  </fieldset>
-
-                  <div class="col-12">
-                    <label for="mesaj" class="form-label">Mesajınız</label>
-                    <textarea class="form-control" id="mesaj" name="mesaj" rows="5" minlength="10" maxlength="1000" placeholder="Mesajınızı buraya yazın" required></textarea>
-                  </div>
-
-                  <div class="col-12">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="kvkk" name="kvkk" value="1" required>
-                      <label class="form-check-label" for="kvkk">Kişisel verilerimin yanıt verilmesi amacıyla işlenmesini kabul ediyorum.</label>
-                    </div>
-                  </div>
-
-                  <div class="col-12 d-flex gap-2">
-                    <button type="submit" class="btn btn-brand"><i class="bi bi-send"></i> Gönder</button>
-                    <button type="reset" class="btn btn-outline-brand">Temizle</button>
-                  </div>
+        <!-- ===== Sol: iletişim formu ===== -->
+        <div class="col-lg-7 mb-4">
+          <section class="kutu">
+            <h2 class="kutu-baslik">Bize yazın</h2>
+            <form action="#" method="post">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label for="ad" class="form-etiket">Ad Soyad</label>
+                  <input type="text" class="form-control" id="ad" name="ad_soyad" placeholder="Adınız Soyadınız" required>
                 </div>
-              </form>
-            </div>
+                <div class="col-md-6 form-group">
+                  <label for="eposta" class="form-etiket">E-posta</label>
+                  <input type="email" class="form-control" id="eposta" name="eposta" placeholder="ornek@mail.com" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="telefon" class="form-etiket">Telefon <span class="soluk">(isteğe bağlı)</span></label>
+                  <input type="text" class="form-control" id="telefon" name="telefon" maxlength="11" placeholder="05XX XXX XX XX">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="konu" class="form-etiket">Konu</label>
+                  <select class="form-control" id="konu" name="konu" required>
+                    <option value="">Konu seçin</option>
+                    <option value="oneri">Öneri</option>
+                    <option value="hata">Hata bildirimi</option>
+                    <option value="soru">Soru</option>
+                    <option value="diger">Diğer</option>
+                  </select>
+                </div>
+              </div>
+
+              <fieldset class="form-group">
+                <legend class="form-etiket">Size nasıl dönelim?</legend>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" name="donus" id="donus-eposta" value="eposta" checked>
+                  <label class="form-check-label" for="donus-eposta">E-posta ile</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-input" name="donus" id="donus-telefon" value="telefon">
+                  <label class="form-check-label" for="donus-telefon">Telefon ile</label>
+                </div>
+              </fieldset>
+
+              <div class="form-group">
+                <label for="mesaj" class="form-etiket">Mesajınız</label>
+                <textarea class="form-control" id="mesaj" name="mesaj" maxlength="1000" placeholder="Mesajınızı buraya yazın" style="height: 130px;" required></textarea>
+              </div>
+
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="kvkk" name="kvkk" value="1" required>
+                <label class="form-check-label" for="kvkk">Kişisel verilerimin yanıt verilmesi amacıyla işlenmesini kabul ediyorum.</label>
+              </div>
+
+              <input type="submit" value="📨 Gönder" class="btn buton-ana mr-2">
+              <input type="reset" value="Temizle" class="btn buton-cerceve">
+            </form>
           </section>
         </div>
 
-        <!-- ===== Iletisim bilgileri ===== -->
-        <div class="col-lg-5">
-          <aside class="d-grid gap-3" aria-label="İletişim bilgileri">
-            <article class="card card-soft card-hover"><div class="card-body stat-card">
-              <span class="stat-icon"><i class="bi bi-envelope"></i></span>
-              <div><p class="stat-label">E-posta</p><p class="mb-0 fw-semibold"><a href="mailto:iletisim@butcem.example">iletisim@butcem.example</a></p></div>
-            </div></article>
-            <article class="card card-soft card-hover"><div class="card-body stat-card">
-              <span class="stat-icon is-income"><i class="bi bi-geo-alt"></i></span>
-              <div><p class="stat-label">Adres</p><p class="mb-0 fw-semibold">Kırklareli Üniversitesi<br>Yazılım Mühendisliği, Kırklareli</p></div>
-            </div></article>
-            <article class="card card-soft"><div class="card-body">
-              <h2 class="h6 mb-3"><i class="bi bi-clock text-muted-2"></i> Yanıt süreleri</h2>
-              <div class="table-responsive">
-                <table class="table table-modern table-sm">
-                  <caption class="visually-hidden">Konulara göre ortalama yanıt süreleri</caption>
-                  <thead><tr><th scope="col">Konu</th><th scope="col" class="text-end">Süre</th></tr></thead>
-                  <tbody>
-                    <tr><td>Soru</td><td class="text-end">1 iş günü</td></tr>
-                    <tr><td>Hata bildirimi</td><td class="text-end">2 iş günü</td></tr>
-                    <tr><td>Öneri</td><td class="text-end">3 iş günü</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div></article>
-            <div class="alert alert-secondary mb-0" role="alert">
-              <i class="bi bi-info-circle"></i> Bu form şimdilik bir yere gönderilmiyor. Arka yüz eklendiğinde mesajlar kaydedilecek.
+        <!-- ===== Sağ: iletişim bilgileri ===== -->
+        <aside class="col-lg-5 yan-sutun">
+          <article class="kutu bilgi-kutusu mb-3">
+            <div class="ikon">✉️</div>
+            <p class="ozet-baslik">E-posta</p>
+            <p class="mb-0"><strong>iletisim@cebimdekirota.com</strong></p>
+          </article>
+          <article class="kutu bilgi-kutusu mb-3">
+            <div class="ikon ikon-gelir">📍</div>
+            <p class="ozet-baslik">Adres</p>
+            <p class="mb-0"><strong>Kırklareli Üniversitesi<br>Yazılım Mühendisliği, Kırklareli</strong></p>
+          </article>
+          <article class="kutu mb-3">
+            <h3 class="kutu-baslik">🕐 Yanıt süreleri</h3>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Konu</th>
+                    <th class="text-right">Süre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Soru</td><td class="text-right">1 iş günü</td></tr>
+                  <tr><td>Hata bildirimi</td><td class="text-right">2 iş günü</td></tr>
+                  <tr><td>Öneri</td><td class="text-right">3 iş günü</td></tr>
+                </tbody>
+              </table>
             </div>
-          </aside>
-        </div>
+          </article>
+          <div class="alert alert-secondary">
+            ℹ️ Bu form şimdilik bir yere gönderilmiyor. Proje yalnızca ön yüzden oluşuyor.
+          </div>
+        </aside>
+
       </div>
     </div>
   </main>
 
-  <!-- ===== Alt bilgi (tum sayfalarda ayni) ===== -->
-  <footer class="site-footer">
+  <!-- ===== FOOTER (tüm sayfalarda aynı) ===== -->
+  <footer class="site-footer text-center">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <a class="d-inline-flex align-items-center gap-2 mb-3 text-white fw-heading fs-4 fw-bold" href="index.html">
-            <img src="img/logo.svg" alt="Bütçem logosu" width="34" height="34" loading="lazy"> Bütçem
-          </a>
-          <p class="mb-0">Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <p class="footer-logo"><img src="img/logo.svg" alt="CebimdekiRota logosu">CebimdekiRota</p>
+          <p>Günlük gelir ve giderlerini tek yerden kaydet, kategorilere göre incele ve ay sonunda raporunu gör.</p>
         </div>
-        <div class="col-6 col-lg-3">
+        <div class="col-6 col-lg-3 mb-4">
           <h2>Sayfalar</h2>
           <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
@@ -194,7 +172,7 @@
             <li><a href="iletisim.html">İletişim</a></li>
           </ul>
         </div>
-        <div class="col-6 col-lg-4">
+        <div class="col-6 col-lg-4 mb-4">
           <h2>Raporlar</h2>
           <ul>
             <li><a href="kategoriler.html">Kategori Grafikleri</a></li>
@@ -203,14 +181,13 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span>&copy; 2026 Bütçem. Web Programlama 1 dönem ödevi.</span>
-        <span>Kırklareli Üniversitesi, Yazılım Mühendisliği</span>
-      </div>
+      <p class="footer-alt">&copy; 2026 CebimdekiRota ·  Kırklareli Üniversitesi Yazılım Mühendisliği</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS: menü, dropdown, modal, sekme, akordeon ve carousel icin gerekli (kendi JavaScript kodumuz yok) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Açılır menü için gerekli JavaScript kütüphaneleri (sayfanın en sonunda) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
